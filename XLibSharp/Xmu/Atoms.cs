@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
+﻿using System.Runtime.InteropServices;
 
 namespace XLibSharp
 {
@@ -12,6 +9,5 @@ namespace XLibSharp
 
         [DllImport("libXmu.so.6")]
         public static extern nint XmuMakeAtom(String name);
-
     }
 }

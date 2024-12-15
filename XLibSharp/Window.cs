@@ -48,16 +48,6 @@ namespace XLibSharp
         public ulong green_mask;
         public ulong blue_mask;
         public nint obdata;
-        private struct funcs
-        {
-            nint create_image;
-            nint destroy_image;
-            nint get_pixel;
-            nint put_pixel;
-            nint sub_image;
-            nint add_pixel;
-        }
-
     }
 
     [StructLayout(LayoutKind.Sequential)]

@@ -763,10 +763,10 @@ namespace XLibSharp
         public static extern XStatus XSendEvent(nint display, XWindow window, bool propagate, long event_mask, nint event_send);
 
         [DllImport("libX11.so.6")]
-        public static extern X11.XAtom XInternAtom(nint display, string name, bool only_if_exists);
+        public static extern XAtom XInternAtom(nint display, string name, bool only_if_exists);
 
         [DllImport("libX11.so.6")]
-        public static extern String XGetAtomName(nint display, X11.XAtom atom);
+        public static extern String XGetAtomName(nint display, XAtom atom);
 
         [DllImport("libX11.so.6")]
         public static extern XStatus XSetWMProtocols(nint display, XWindow window, ref XAtom protocols, int count);

@@ -37,6 +37,6 @@ namespace XLibSharp
         /// <param name="delay">delay in milliseconds before performing the action</param>
         /// <returns></returns>
         [DllImport("libXtst.so")]
-        public static extern int XTestFakeKeyEvent(nint display, X11.XKeyCode code, bool is_press, ulong delay);
+        public static extern int XTestFakeKeyEvent(nint display, XKeyCode code, bool is_press, ulong delay);
     }
 }
