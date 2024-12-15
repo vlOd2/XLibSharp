@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace XLibSharp
 {
-
     public enum XWindow : ulong
     {
         None = 0,
@@ -48,8 +47,7 @@ namespace XLibSharp
         AnyModifier = (1 << 15),
     }
 
-
-    public partial class Xlib
+    public partial class XLib
     {
         /// <summary>
         ///        The XGrabButton function establishes a passive grab.  In the future, the pointer is actively grabbed (as for
@@ -133,6 +131,4 @@ namespace XLibSharp
         [DllImport("libX11.so.6")]
         public static extern void XDisplayKeycodes(nint display, nint min, nint max);
     }
-
-
 }

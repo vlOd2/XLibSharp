@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace XLibSharp
 {
-    public partial class Xlib
+    public partial class XLib
     {
         /// <summary>
         /// The XCreatePixmap() function creates a pixmap of the width, height, and depth you specified and returns a 

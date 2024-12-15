@@ -34,7 +34,7 @@ namespace XLibSharp
         public ulong eventMask;
     }
 
-    public partial class Xlib
+    public partial class XLib
     {
         [DllImport("libX11.so.6")]
         public static extern XStatus XSetScreenSaver(nint display, int timeout, int interval, XScreenSaverBlanking prefer_blanking, 

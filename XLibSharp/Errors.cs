@@ -1,8 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
+
 namespace XLibSharp
 {
-
     [StructLayout(LayoutKind.Sequential)]
     public struct XErrorEvent
     {
@@ -21,7 +20,7 @@ namespace XLibSharp
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate int XIOErrorHandlerDelegate(nint display);
 
-    public partial class Xlib
+    public partial class XLib
     {
         /// <summary>
         /// Define the function to be called when the X server reports an error

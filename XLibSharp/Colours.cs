@@ -31,7 +31,7 @@ namespace XLibSharp
         public byte pad;
     }
 
-    public partial class Xlib
+    public partial class XLib
     {
         /// <summary>
         /// Returns the default colormap ID for allocation on the specified screen. 

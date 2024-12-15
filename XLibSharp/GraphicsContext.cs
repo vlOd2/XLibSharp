@@ -114,7 +114,6 @@ namespace XLibSharp
         ushort width, height;
     }
 
-
     [StructLayout(LayoutKind.Sequential)]
     public struct XGCValues
     {
@@ -143,7 +142,7 @@ namespace XLibSharp
         byte dashes;
     }
 
-    public partial class Xlib
+    public partial class XLib
     {
         /// <summary>
         /// vThe XCreateGC function creates a graphics context and returns a GC.  The GC can be used with any destination

@@ -6,8 +6,8 @@ namespace XLibSharp
 {
     public enum XPixmapFormat : int
     {
-        XYBitmap = 0, 
-        XYPixmap = 1, 
+        XYBitmap = 0,
+        XYPixmap = 1,
         ZPixmap = 2
     };
 
@@ -106,7 +106,7 @@ namespace XLibSharp
         public int stack_mode;
     }
 
-    public partial class Xlib
+    public partial class XLib
     {
         /// <summary>
         /// The XGetWindowAttributes function returns the current attributes for the specified window to an XWindowAt‐
@@ -150,7 +150,6 @@ namespace XLibSharp
         public static extern ref XImage XGetImage(nint display, XWindow drawable, int x, int y,
             uint width, uint height, ulong plane_mask, XPixmapFormat format);
 
-
         [DllImport("libX11.so.6")]
         public static extern XStatus XSelectInput(nint display, XWindow window, XEventMask event_mask);
 
@@ -164,7 +163,7 @@ namespace XLibSharp
             nint pChildren = new nint();
             uint nChildren = 0;
 
-            var r = Xlib.XQueryTree(display, window, ref WinRootReturn, ref WinParentReturn,
+            var r = XLib.XQueryTree(display, window, ref WinRootReturn, ref WinParentReturn,
                 ref pChildren, ref nChildren);
 
             for (int i = 0; i < nChildren; i++)
@@ -262,5 +261,4 @@ namespace XLibSharp
         public static extern int XGetGeometry(nint display, XWindow drawable, ref XWindow root,
             ref int x, ref int y, ref uint width, ref uint height, ref uint border, ref uint depth);
     }
-
 }

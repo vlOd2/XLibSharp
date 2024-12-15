@@ -11,7 +11,7 @@ namespace XLibSharp
         public nint address;
     }
 
-    public partial class Xlib
+    public partial class XLib
     {
         [DllImport("libX11.so.6")]
         public static extern XStatus XAddHost(nint display, ref XHostAddress host);

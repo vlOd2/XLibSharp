@@ -1,11 +1,9 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace XLibSharp
 {
-    public partial class Xlib
+    public partial class XLib
     {
-
         [DllImport("libX11.so.6")]
         public static extern XStatus XSetFontPath(nint display, nint directories, int ndirs);
 
@@ -22,7 +20,7 @@ namespace XLibSharp
         public static extern XStatus XFreeFontNames(nint list);
 
         [DllImport("libX11.so.6")]
-        public static extern nint XListFontsWithInfo(nint display, string pattern, int maxnames, 
+        public static extern nint XListFontsWithInfo(nint display, string pattern, int maxnames,
             ref int count_return, nint info_return);
 
         [DllImport("libX11.so.6")]

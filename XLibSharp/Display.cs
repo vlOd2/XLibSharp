@@ -3,20 +3,17 @@ using System.Runtime.InteropServices;
 
 namespace XLibSharp
 {
-    public enum XCloseDownMode: int
+    public enum XCloseDownMode : int
     {
         DestroyAll = 0,
         RetainPermanent = 1,
         RetainTemporary = 2,
     }
 
-
-
-    public enum XPlanes: ulong
+    public enum XPlanes : ulong
     {
         AllPlanes = 0xffffffffffffffff,
     }
-
 
     [StructLayout(LayoutKind.Sequential)]
     public struct Screen
@@ -40,7 +37,7 @@ namespace XLibSharp
         long root_input_mask;
     }
 
-    public partial class Xlib
+    public partial class XLib
     {
         /// <summary>
         /// Initiate a connection to the name X session.
@@ -356,6 +353,5 @@ namespace XLibSharp
 
         [DllImport("libX11.so.6")]
         public static extern int XChangeProperty(nint display, XWindow window, XAtom property, XAtom type, int format, int mode, nint data, int nelements);
-
     }
 }

@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace XLibSharp
 {
-    public enum XFontCursor: ulong
+    public enum XFontCursor : ulong
     {
         None = 0,
         XC_fleur = 52,
@@ -11,7 +11,7 @@ namespace XLibSharp
         XC_sizing = 120,
     }
 
-    public partial class Xlib
+    public partial class XLib
     {
         /// <summary>
         /// If a cursor is set, it will be used when the pointer is in the window.  If the cursor is None, it is equiva‐
@@ -138,7 +138,7 @@ namespace XLibSharp
         /// <param name="height_return">Returned height closest to specified height</param>
         /// <returns>zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XQueryBestCursor (nint display, XWindow drawable, uint width, uint height,
+        public static extern XStatus XQueryBestCursor(nint display, XWindow drawable, uint width, uint height,
             ref uint width_return, ref uint height_return);
     }
 }

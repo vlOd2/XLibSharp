@@ -1,9 +1,7 @@
-using System;
 using System.Runtime.InteropServices;
 
 namespace XLibSharp
 {
-    // See XAtom.h and Xmu/Atoms.h
     public enum XAtom : ulong
     {
         None = 0,
@@ -13,7 +11,7 @@ namespace XLibSharp
         Atom = 4,
         Bitmap = 5,
         Cardinal = 6,
-		Colormap = 7,
+        Colormap = 7,
         Cursor = 8,
         CutBuffer0 = 9,
         CutBuffer1 = 10,
@@ -75,10 +73,10 @@ namespace XLibSharp
         CapHeight = 66,
         WmClass = 67,
         WmTransientFor = 68,
-		LastPredefined = 68
+        LastPredefined = 68
     }
 
-    public enum XMappingType: int
+    public enum XMappingType : int
     {
         MappingModifier = 0,
         MappingKeyboard = 1,
@@ -157,14 +155,14 @@ namespace XLibSharp
         OwnerGrabButtonMask = (1L << 24),
     }
 
-    public enum XQueueMode: int
+    public enum XQueueMode : int
     {
         QueuedAlready = 0,
         QueuedAfterReading = 1,
         QueuedAfterFlush = 2,
     }
 
-    public enum XNotifyMode: int
+    public enum XNotifyMode : int
     {
         NotifyNormal = 0,
         NotifyGrab = 1,
@@ -172,7 +170,7 @@ namespace XLibSharp
         NotifyWhileGrabbed = 3,
     }
 
-    public enum XNotifyDetail: int
+    public enum XNotifyDetail : int
     {
         NotifyAncestor = 0,
         NotifyVirtual = 1,
@@ -236,7 +234,6 @@ namespace XLibSharp
         public bool same_screen;
     }
 
-
     [StructLayout(LayoutKind.Sequential)]
     public struct XMotionEvent
     {
@@ -283,7 +280,7 @@ namespace XLibSharp
         public bool send_event;        /* true if this came from a SendEvent request */
         public nint display;       /* Display the event was read from */
         public XWindow window;          /* window of event */
-        XNotifyMode mode; 
+        XNotifyMode mode;
         XNotifyDetail detail;
     }
 
@@ -554,7 +551,6 @@ namespace XLibSharp
         public int count;
     }
 
-
     [StructLayout(LayoutKind.Sequential, Size = (24 * sizeof(long)))]
     public struct XConfigureRequestEvent
     {
@@ -574,11 +570,10 @@ namespace XLibSharp
         public ulong value_mask;
     }
 
-
     /// <summary>
     /// Raised to notify the X window manager that a window has changed parents.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Size = (24 * sizeof(long)))]
     public struct XReparentEvent
     {
         public int type;               /* ReparentNotify */
@@ -595,8 +590,7 @@ namespace XLibSharp
         public bool override_redirect;
     }
 
-
-    public partial class Xlib
+    public partial class XLib
     {
         /// <summary>
         /// The XNextEvent function copies the first event from the event queue into the specified XEvent structure and
