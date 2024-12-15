@@ -3,7 +3,7 @@ XLib and GLX bindings for C# .NET 8
 
 # Example
 An example application is provided that uses both XLib and GLX<br>
-***⚠ It is using a slim version of LegacyGL (AGPLV3) as you have to provide your own GL bindings***
+***⚠ You have to provide your own GL bindings***
 
 # ♥ Fork
 This project is a fork of [X11.Net](https://github.com/ajnewlands/X11.Net)<br>

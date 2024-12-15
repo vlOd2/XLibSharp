@@ -2,7 +2,6 @@
 using XLibSharp;
 using static XLibSharp.XLib;
 using static XLibSharp.GLX;
-using static GL;
 
 public class Program
 {
@@ -134,7 +133,7 @@ public class Program
                     Console.WriteLine($"Resize: {windowWidth},{windowHeight} -> {w},{h}");
                     windowWidth = w;
                     windowHeight = h;
-                    glViewport(0, 0, windowWidth, windowHeight);
+                    // glViewport(0, 0, windowWidth, windowHeight);
 
                     break;
                 }
@@ -152,19 +151,19 @@ public class Program
         if (XSetWMProtocols(display, window, ref wmDeleteWindow, 1) == XStatus.Failure)
             Console.Error.WriteLine("WM_DELETE_WINDOW failed");
 
-        glClearColor(1.0F, 0.0F, 0.0F, 1.0F);
-        glViewport(0, 0, windowWidth, windowHeight);
+        // glClearColor(1.0F, 0.0F, 0.0F, 1.0F);
+        // glViewport(0, 0, windowWidth, windowHeight);
 
         while (true)
         {
-            glClear(GL_COLOR_BUFFER_BIT);
+            // glClear(GL_COLOR_BUFFER_BIT);
 
-            glColor3f(0.0F, 1.0F, 0.0F);
-            glBegin(GL_TRIANGLES);
-            glVertex3f(-0.5F, -0.5F, -1.0F);
-            glVertex3f(0.5F, -0.5F, -1.0F);
-            glVertex3f(0.0F, 0.5F, -1.0F);
-            glEnd();
+            // glColor3f(0.0F, 1.0F, 0.0F);
+            // glBegin(GL_TRIANGLES);
+            // glVertex3f(-0.5F, -0.5F, -1.0F);
+            // glVertex3f(0.5F, -0.5F, -1.0F);
+            // glVertex3f(0.0F, 0.5F, -1.0F);
+            // glEnd();
 
             glXSwapBuffers(display, window);
             PollEvents((ulong)wmDeleteWindow);
