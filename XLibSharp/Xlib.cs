@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace X11
+namespace XLibSharp
 {
     public enum XStatus: int
     {
@@ -142,6 +142,6 @@ namespace X11
     public partial class Xlib
     {
         [DllImport("libX11.so.6")]
-        public static extern void XFree(IntPtr data);
+        public static extern void XFree(nint data);
     }
 }

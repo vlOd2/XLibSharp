@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace X11
+namespace XLibSharp
 {
 
     public enum XWindow : ulong
@@ -78,25 +78,25 @@ namespace X11
         /// <param name="cursor">Specify the cursor to display or None (0)</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGrabButton(IntPtr display, XButton button, XKeyButtonMask modifiers, XWindow grab_window,
+        public static extern XStatus XGrabButton(nint display, XButton button, XKeyButtonMask modifiers, XWindow grab_window,
         bool owner_events, XEventMask event_mask, XGrabMode pointer_mode, XGrabMode keyboard_mode, XWindow confine_to, XFontCursor cursor);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGrabPointer(IntPtr display, XWindow grab_window, bool owner_events, XEventMask event_mask,
+        public static extern XStatus XGrabPointer(nint display, XWindow grab_window, bool owner_events, XEventMask event_mask,
             XGrabMode pointer_mode, XGrabMode keyboard_mode, XWindow confine_to, XCursor cursor, ulong time);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XUngrabPointer(IntPtr display, ulong time);
+        public static extern XStatus XUngrabPointer(nint display, ulong time);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGrabKey(IntPtr display, XKeyCode keycode, XKeyButtonMask modifiers, XWindow grab_window,
+        public static extern XStatus XGrabKey(nint display, XKeyCode keycode, XKeyButtonMask modifiers, XWindow grab_window,
             bool owner_events, XGrabMode pointer_mode, XGrabMode keyboard_mode);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XUngrabKey(IntPtr display, XKeyCode keycode, XKeyButtonMask modifiers, XWindow grab_window);
+        public static extern XStatus XUngrabKey(nint display, XKeyCode keycode, XKeyButtonMask modifiers, XWindow grab_window);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XChangeActivePointerGrab(IntPtr display, XEventMask event_mask, XCursor cursor, ulong time);
+        public static extern XStatus XChangeActivePointerGrab(nint display, XEventMask event_mask, XCursor cursor, ulong time);
 
         [DllImport("libX11.so.6")]
         public static extern XKeySym XStringToKeysym(string str);
@@ -105,10 +105,10 @@ namespace X11
         public static extern string XKeysymToString(XKeySym keysym);
 
         [DllImport("libX11.so.6")]
-        public static extern XKeySym XKeycodeToKeysym(IntPtr display, XKeyCode keycode, int index);
+        public static extern XKeySym XKeycodeToKeysym(nint display, XKeyCode keycode, int index);
 
         [DllImport("libX11.so.6")]
-        public static extern XKeyCode XKeysymToKeycode(IntPtr display, XKeySym keysym);
+        public static extern XKeyCode XKeysymToKeycode(nint display, XKeySym keysym);
 
         /// <summary>
         ///  The XUngrabButton function releases the passive button/key combination on the specified window if it was
@@ -122,16 +122,16 @@ namespace X11
         /// <param name="grab_button">Specify the grab window.</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XUngrabButton(IntPtr display, XButton button, XKeyButtonMask modifiers, XWindow grab_window);
+        public static extern XStatus XUngrabButton(nint display, XButton button, XKeyButtonMask modifiers, XWindow grab_window);
 
         [DllImport("libX11.so.6")]
-        public static extern IntPtr XGetKeyboardMapping(IntPtr display, XKeyCode keyCode, int keycode_count, IntPtr keysyms_per_keycode_return);
+        public static extern nint XGetKeyboardMapping(nint display, XKeyCode keyCode, int keycode_count, nint keysyms_per_keycode_return);
 
         [DllImport("libX11.so.6")]
-        public static extern int XChangeKeyboardMapping(IntPtr display, XKeyCode keyCode, int keysyms_per_keycode, IntPtr keysys, int num_codes);
+        public static extern int XChangeKeyboardMapping(nint display, XKeyCode keyCode, int keysyms_per_keycode, nint keysys, int num_codes);
 
         [DllImport("libX11.so.6")]
-        public static extern void XDisplayKeycodes(IntPtr display, IntPtr min, IntPtr max);
+        public static extern void XDisplayKeycodes(nint display, nint min, nint max);
     }
 
 

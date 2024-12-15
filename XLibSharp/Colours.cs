@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace X11
+namespace XLibSharp
 {
     public enum XcmsColorFormat : ulong
     {
@@ -41,7 +41,7 @@ namespace X11
         /// <param name="screen_number">Target screen</param>
         /// <returns>Default color map for screen</returns>
         [DllImport("libX11.so.6")]
-        public static extern XColormap XDefaultColormap(IntPtr display, int screen_number);
+        public static extern XColormap XDefaultColormap(nint display, int screen_number);
 
         /// <summary>
         /// The XCreateColormap function creates a colormap of the specified visual type for the screen on which the spec‐
@@ -54,7 +54,7 @@ namespace X11
         /// <param name="alloc">Allocation mode</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XColormap XCreateColormap(IntPtr display, XWindow window, IntPtr visual, XColormapAlloc alloc);
+        public static extern XColormap XCreateColormap(nint display, XWindow window, nint visual, XColormapAlloc alloc);
 
         /// <summary>
         /// The XCopyColormapAndFree function creates a colormap of the same visual type and for the same screen as the
@@ -72,7 +72,7 @@ namespace X11
         /// <param name="colormap">Source colormap</param>
         /// <returns>New colormap</returns>
         [DllImport("libX11.so.6")]
-        public static extern XColormap XCopyColormapAndFree(IntPtr display, XColormap colormap);
+        public static extern XColormap XCopyColormapAndFree(nint display, XColormap colormap);
 
         /// <summary>
         /// The XFreeColormap function deletes the association between the colormap resource ID and the colormap and frees
@@ -86,16 +86,16 @@ namespace X11
         /// <param name="colormap">Colormap to free</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XFreeColormap(IntPtr display, XColormap colormap);
+        public static extern XStatus XFreeColormap(nint display, XColormap colormap);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XInstallColormap(IntPtr display, XColormap colormap);
+        public static extern XStatus XInstallColormap(nint display, XColormap colormap);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XUninstallColormap(IntPtr display, XColormap colormap);
+        public static extern XStatus XUninstallColormap(nint display, XColormap colormap);
 
         [DllImport("libX11.so.6")]
-        public static extern XColormap[] XListInstalledColormaps(IntPtr display, XWindow window, ref int num_return);
+        public static extern XColormap[] XListInstalledColormaps(nint display, XWindow window, ref int num_return);
 
         /// <summary>
         /// The XParseColor function looks up the string name of a color with respect to the screen associated with the
@@ -109,7 +109,7 @@ namespace X11
         /// <param name="xcolor_return">returned color</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XParseColor(IntPtr display, XColormap colormap, string spec, ref XColor xcolor_return);
+        public static extern XStatus XParseColor(nint display, XColormap colormap, string spec, ref XColor xcolor_return);
 
         /// <summary>
         /// The XAllocColor function allocates a read-only colormap entry corresponding to the closest RGB value supported
@@ -126,7 +126,7 @@ namespace X11
         /// <param name="screen_in_out">Allocated colour</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XAllocColor(IntPtr display, XColormap colormap, ref XColor screen_in_out);
+        public static extern XStatus XAllocColor(nint display, XColormap colormap, ref XColor screen_in_out);
 
         /// <summary>
         /// The XAllocColorCells function allocates read/write color cells.  The number of colors must be positive and the
@@ -143,7 +143,7 @@ namespace X11
         /// <param name="npixels">Number of pixels to return</param>
         /// <returns>Zero on failures</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XAllocColorCells(IntPtr display, XColormap colormap, bool contig, ulong[] plane_masks_return,
+        public static extern XStatus XAllocColorCells(nint display, XColormap colormap, bool contig, ulong[] plane_masks_return,
               uint nplanes, ulong[] pixels_return, uint npixels);
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace X11
         /// <param name="bmask_return"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XAllocColorPlanes(IntPtr display, XColormap colormap, bool contig, 
+        public static extern XStatus XAllocColorPlanes(nint display, XColormap colormap, bool contig, 
             ulong[] pixels_return, int ncolors, int nreds, int ngreens, int nblues, ref ulong rmask_return, 
             ref ulong gmask_return, ref ulong bmask_return);
 
@@ -183,7 +183,7 @@ namespace X11
         /// <param name="result_format">Target Colour format</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsAllocColor(IntPtr display, XColormap colormap, ref XcmsColor color_in_out,
+        public static extern XStatus XcmsAllocColor(nint display, XColormap colormap, ref XcmsColor color_in_out,
             XcmsColorFormat result_format);
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace X11
         /// <param name="result_format">Desired result format</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsAllocNamedColor(IntPtr display, XColormap colormap, IntPtr color_string, 
+        public static extern XStatus XcmsAllocNamedColor(nint display, XColormap colormap, nint color_string, 
             ref XcmsColor color_screen_return, ref XcmsColor color_exact_return, XcmsColorFormat result_format);
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace X11
         /// <param name="def_in_out">Reference colour</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern int XQueryColor(IntPtr display, XColormap colormap, ref XColor def_in_out);
+        public static extern int XQueryColor(nint display, XColormap colormap, ref XColor def_in_out);
 
         /// <summary>
         /// The XcmsQueryColor function obtains the RGB value for the pixel value in the pixel member of the specified
@@ -225,7 +225,7 @@ namespace X11
         /// <param name="result_format"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsQueryColor (IntPtr display, XColormap colormap, ref XcmsColor color_in_out, 
+        public static extern XStatus XcmsQueryColor (nint display, XColormap colormap, ref XcmsColor color_in_out, 
             XcmsColorFormat result_format);
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace X11
         /// <param name="result_format"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsQueryColors(IntPtr display, XColormap colormap, XcmsColor[] colors_in_out,
+        public static extern XStatus XcmsQueryColors(nint display, XColormap colormap, XcmsColor[] colors_in_out,
             uint ncolors, XcmsColorFormat result_format);
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace X11
         /// <param name="result_format"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsLookupColor(IntPtr display, XColormap colormap, IntPtr color_string, 
+        public static extern XStatus XcmsLookupColor(nint display, XColormap colormap, nint color_string, 
             ref XcmsColor color_exact_return, ref XcmsColor color_screen_return, XcmsColorFormat result_format);
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace X11
         /// <param name="ncolors">Number of colours in the array</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern int XQueryColors(IntPtr display, XColormap colormap, XColor[] defs_in_out, int ncolors);
+        public static extern int XQueryColors(nint display, XColormap colormap, XColor[] defs_in_out, int ncolors);
 
         /// <summary>
         /// The XLookupColor function looks up the string name of a color with respect to the screen associated with the
@@ -285,7 +285,7 @@ namespace X11
         /// <param name="screen_def_return">Returned nearest colormap for screen</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XLookupColor(IntPtr display, XColormap colormap, IntPtr color_name,
+        public static extern XStatus XLookupColor(nint display, XColormap colormap, nint color_name,
             ref XColor exact_def_return, ref XColor screen_def_return);
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace X11
         /// <param name="ncolors">Number of colours to update</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XStoreColors(IntPtr display, XColormap colormap, XColor[] color, int ncolors);
+        public static extern XStatus XStoreColors(nint display, XColormap colormap, XColor[] color, int ncolors);
 
         /// <summary>
         /// The XStoreColor function changes the colormap entry of the pixel value specified in the pixel member of the
@@ -312,7 +312,7 @@ namespace X11
         /// <param name="color">Color to replace</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XStoreColor(IntPtr display, XColormap colormap, ref XColor color);
+        public static extern XStatus XStoreColor(nint display, XColormap colormap, ref XColor color);
 
         /// <summary>
         ///  The XcmsStoreColor function converts the color specified in the XcmsColor structure into RGB values.  It then
@@ -324,7 +324,7 @@ namespace X11
         /// <param name="color"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsStoreColor(IntPtr display, XColormap colormap, ref XcmsColor color);
+        public static extern XStatus XcmsStoreColor(nint display, XColormap colormap, ref XcmsColor color);
 
         /// <summary>
         /// The XcmsStoreColors function converts the colors specified in the array of XcmsColor structures into RGB
@@ -339,7 +339,7 @@ namespace X11
         /// <param name="compression_flags_return"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsStoreColors(IntPtr display, XColormap colormap, XcmsColor[] colors, 
+        public static extern XStatus XcmsStoreColors(nint display, XColormap colormap, XcmsColor[] colors, 
             int ncolors, bool[] compression_flags_return);
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace X11
         /// <param name="flags">Which of RGB components to store</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XStoreNamedColor(IntPtr display, XColormap colormap, IntPtr color,
+        public static extern XStatus XStoreNamedColor(nint display, XColormap colormap, nint color,
             ulong pixel, int flags);
 
         /// <summary>
@@ -375,7 +375,7 @@ namespace X11
         /// <param name="planes"></param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XFreeColors(IntPtr display, XColormap colormap, ulong[] pixels, 
+        public static extern XStatus XFreeColors(nint display, XColormap colormap, ulong[] pixels, 
             int npixels, ulong planes);
 
 
@@ -390,15 +390,15 @@ namespace X11
         /// <param name="compression_flags_return"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsConvertColors(IntPtr ccc, XcmsColor[] colors_in_out, uint ncolors, 
+        public static extern XStatus XcmsConvertColors(nint ccc, XcmsColor[] colors_in_out, uint ncolors, 
             XcmsColorFormat target_format, bool[] compression_flags_return);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate XStatus XcmsCompressionProc(IntPtr CCC, XcmsColor[] colors_int_out, uint ncolors,
+        public delegate XStatus XcmsCompressionProc(nint CCC, XcmsColor[] colors_int_out, uint ncolors,
             uint index, bool[] compression_flags_return);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate XStatus XcmsWhiteAdjustProc(IntPtr ccc, ref XcmsColor initial_white_point,
+        public delegate XStatus XcmsWhiteAdjustProc(nint ccc, ref XcmsColor initial_white_point,
             ref XcmsColor target_white_point, XcmsColorFormat target_format, XcmsColor[] colors_in_out,
             uint ncolors, bool[] compression_flags_return);
 
@@ -411,7 +411,7 @@ namespace X11
         /// <param name="color"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsSetWhitePoint(IntPtr ccc, ref XcmsColor color);
+        public static extern XStatus XcmsSetWhitePoint(nint ccc, ref XcmsColor color);
 
         /// <summary>
         /// The XcmsSetWhiteAdjustProc function first sets the white point adjustment procedure and client data in the
@@ -422,8 +422,8 @@ namespace X11
         /// <param name="client_data"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XcmsWhiteAdjustProc XcmsSetWhiteAdjustProc(IntPtr ccc, XcmsWhiteAdjustProc white_adjust_proc,
-            IntPtr client_data);
+        public static extern XcmsWhiteAdjustProc XcmsSetWhiteAdjustProc(nint ccc, XcmsWhiteAdjustProc white_adjust_proc,
+            nint client_data);
 
         /// <summary>
         /// The XcmsCreateCCC function creates a CCC for the specified display, screen, and visual.
@@ -438,9 +438,9 @@ namespace X11
         /// <param name="white_adjust_client_data"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern IntPtr XcmsCreateCCC(IntPtr display, int screen_number, IntPtr visual, 
-            ref XcmsColor client_white_point, XcmsCompressionProc compression_proc, IntPtr compression_client_data,
-            XcmsWhiteAdjustProc white_adjust_proc, IntPtr white_adjust_client_data);
+        public static extern nint XcmsCreateCCC(nint display, int screen_number, nint visual, 
+            ref XcmsColor client_white_point, XcmsCompressionProc compression_proc, nint compression_client_data,
+            XcmsWhiteAdjustProc white_adjust_proc, nint white_adjust_client_data);
 
         /// <summary>
         /// The XcmsFreeCCC function frees the memory used for the specified CCC.  Note that default CCCs and those 
@@ -448,7 +448,7 @@ namespace X11
         /// </summary>
         /// <param name="ccc"></param>
         [DllImport("libX11.so.6")]
-        public static extern void XcmsFreeCCC(IntPtr ccc);
+        public static extern void XcmsFreeCCC(nint ccc);
 
         /// <summary>
         /// The XcmsCCCOfColormap function returns the CCC associated with the specified colormap. Once obtained, the CCC
@@ -459,7 +459,7 @@ namespace X11
         /// <param name="colormap"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern IntPtr XcmsCCCOfColormap(IntPtr display, XColormap colormap);
+        public static extern nint XcmsCCCOfColormap(nint display, XColormap colormap);
 
         /// <summary>
         /// The XcmsSetCCCOfColormap function changes the CCC associated with the specified colormap. It returns the CCC
@@ -472,7 +472,7 @@ namespace X11
         /// <param name="ccc"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern IntPtr XcmsSetCCCOfColormap(IntPtr display, XColormap colormap, IntPtr ccc);
+        public static extern nint XcmsSetCCCOfColormap(nint display, XColormap colormap, nint ccc);
 
         /// <summary>
         /// The XcmsDefaultCCC function returns the default CCC for the specified screen.  
@@ -482,55 +482,55 @@ namespace X11
         /// <param name="screen_number"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern IntPtr XcmsDefaultCCC(IntPtr display, int screen_number);
+        public static extern nint XcmsDefaultCCC(nint display, int screen_number);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsTekHVCQueryMaxC(IntPtr ccc, double hue, double value, 
+        public static extern XStatus XcmsTekHVCQueryMaxC(nint ccc, double hue, double value, 
             ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsTekHVCQueryMaxV(IntPtr ccc, double hue, double chroma, 
+        public static extern XStatus XcmsTekHVCQueryMaxV(nint ccc, double hue, double chroma, 
             ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsTekHVCQueryMaxVC(IntPtr ccc, double hue, ref XcmsColor color_return);
+        public static extern XStatus XcmsTekHVCQueryMaxVC(nint ccc, double hue, ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsTekHVCQueryMaxVSamples(IntPtr ccc, double hue, XcmsColor[] colors_return,
+        public static extern XStatus XcmsTekHVCQueryMaxVSamples(nint ccc, double hue, XcmsColor[] colors_return,
             uint nsamples);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsTekHVCQueryMinV(IntPtr ccc, double hue, double chroma,
+        public static extern XStatus XcmsTekHVCQueryMinV(nint ccc, double hue, double chroma,
             ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsCIELabQueryMaxC(IntPtr ccc, double hue_angle, double L_star, 
+        public static extern XStatus XcmsCIELabQueryMaxC(nint ccc, double hue_angle, double L_star, 
             ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsCIELabQueryMaxL(IntPtr ccc, double hue_angle, double chroma, 
+        public static extern XStatus XcmsCIELabQueryMaxL(nint ccc, double hue_angle, double chroma, 
             ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsCIELabQueryMaxLC(IntPtr ccc, double hue_angle, ref XcmsColor color_return);
+        public static extern XStatus XcmsCIELabQueryMaxLC(nint ccc, double hue_angle, ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsCIELabQueryMinL(IntPtr ccc, double hue_angle, double chroma, 
+        public static extern XStatus XcmsCIELabQueryMinL(nint ccc, double hue_angle, double chroma, 
             ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsCIELuvQueryMaxC(IntPtr ccc, double hue_angle, double L_star, 
+        public static extern XStatus XcmsCIELuvQueryMaxC(nint ccc, double hue_angle, double L_star, 
             ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsCIELuvQueryMaxL(IntPtr ccc, double hue_angle, double chroma, 
+        public static extern XStatus XcmsCIELuvQueryMaxL(nint ccc, double hue_angle, double chroma, 
             ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsCIELuvQueryMaxLC(IntPtr ccc, double hue_angle, ref XcmsColor color_return);
+        public static extern XStatus XcmsCIELuvQueryMaxLC(nint ccc, double hue_angle, ref XcmsColor color_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XcmsCIELuvQueryMinL(IntPtr ccc, double hue_angle, double chroma,
+        public static extern XStatus XcmsCIELuvQueryMinL(nint ccc, double hue_angle, double chroma,
             ref XcmsColor color_return);
     }
 }

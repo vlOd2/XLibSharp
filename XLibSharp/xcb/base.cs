@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace X11
+namespace XLibSharp
 {
     public partial class xcb
     {
@@ -14,10 +14,10 @@ namespace X11
         /// <param name="ScreenNumber">Pointer to the screen number to connect to. Defaults to zero where this is NULL</param>
         /// <returns>A pointer to the connection object. Always returns non-null; check the result with xcb_connection_has_error()</returns>
         [DllImport("libxcb.so")]
-        public static extern IntPtr xcb_connect(string DisplayName, IntPtr ScreenNumber);
+        public static extern nint xcb_connect(string DisplayName, nint ScreenNumber);
 
         [DllImport("libxcb.so")]
-        public static extern void xcb_disconnect(IntPtr Connection);
+        public static extern void xcb_disconnect(nint Connection);
 
         /// <summary>
         /// Return codes for xcb_connection_has_error()
@@ -39,13 +39,13 @@ namespace X11
         /// <param name="Connection">Pointer to a connection object returned by xcb_connect()</param>
         /// <returns>0 on success, >0 on failure.</returns>
         [DllImport("libxcb.so")]
-        public static extern XCBConnectionError xcb_connection_has_error(IntPtr Connection);
+        public static extern XCBConnectionError xcb_connection_has_error(nint Connection);
 
         [DllImport("libxcb.so")]
-        public static extern IntPtr xcb_get_setup(IntPtr Connection);
+        public static extern nint xcb_get_setup(nint Connection);
 
         [DllImport("libxcb.so")]
-        public static extern xcb_screen_iterator_t xcb_setup_roots_iterator(IntPtr Setup);
+        public static extern xcb_screen_iterator_t xcb_setup_roots_iterator(nint Setup);
 
         /// <summary>
         /// Block until the next event is received (or the connection to X11 is lost)
@@ -53,11 +53,11 @@ namespace X11
         /// <param name="Connection">A pointer to an opaque connection structure</param>
         /// <returns>The next event received (or null on disconnection)</returns>
         [DllImport("libxcb.so")]
-        private static extern IntPtr xcb_wait_for_event(IntPtr Connection);
-        public static generic_event? wait_for_event(IntPtr Connection)
+        private static extern nint xcb_wait_for_event(nint Connection);
+        public static generic_event? wait_for_event(nint Connection)
         {
             var e = xcb_wait_for_event(Connection);
-            return (e == IntPtr.Zero) ? new generic_event?() : Marshal.PtrToStructure<generic_event>(e);
+            return (e == nint.Zero) ? new generic_event?() : Marshal.PtrToStructure<generic_event>(e);
         }
 
     }

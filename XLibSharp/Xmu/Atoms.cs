@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace X11
+namespace XLibSharp
 {
     public partial class Xmu
     {
         [DllImport("libXmu.so.6")]
-        public static extern XAtom XmuInternAtom(IntPtr display, IntPtr atomPtr);
+        public static extern XAtom XmuInternAtom(nint display, nint atomPtr);
 
         [DllImport("libXmu.so.6")]
-        public static extern IntPtr XmuMakeAtom(String name);
+        public static extern nint XmuMakeAtom(String name);
 
     }
 }

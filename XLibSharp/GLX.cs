@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace X11
+namespace XLibSharp
 {
     [StructLayout(LayoutKind.Sequential)]
     public struct XVisualInfo

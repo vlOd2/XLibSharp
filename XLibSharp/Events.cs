@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace X11
+namespace XLibSharp
 {
     // See XAtom.h and Xmu/Atoms.h
     public enum XAtom : ulong
@@ -196,7 +196,7 @@ namespace X11
         public int type;
         public ulong serial;
         public bool send_event;
-        public IntPtr display;
+        public nint display;
         public XWindow window;
     }
 
@@ -206,7 +206,7 @@ namespace X11
         public int type;               /* of event */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;          /* "event" window it is reported relative to */
         public XWindow root;            /* root window that the event occurred on */
         public XWindow subwindow;       /* child window */
@@ -224,7 +224,7 @@ namespace X11
         public int type;       /* of event */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public IntPtr display;   /* Display the event was read from */
+        public nint display;   /* Display the event was read from */
         public XWindow window;          /* "event" window it is reported relative to */
         public XWindow root;            /* root window that the event occurred on */
         public XWindow subwindow;   /* child window */
@@ -243,7 +243,7 @@ namespace X11
         public int type;               /* of event */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;          /* "event" window reported relative to */
         public XWindow root;            /* root window that the event occurred on */
         public XWindow subwindow;       /* child window */
@@ -261,7 +261,7 @@ namespace X11
         public int type;               /* of event */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;          /* "event" window reported relative to */
         public XWindow root;            /* root window that the event occurred on */
         public XWindow subwindow;       /* child window */
@@ -281,7 +281,7 @@ namespace X11
         public int type;               /* FocusIn or FocusOut */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;          /* window of event */
         XNotifyMode mode; 
         XNotifyDetail detail;
@@ -293,7 +293,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;
         public byte[] key_vector; // 32 byte vector
     }
@@ -304,7 +304,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;
         public int x, y;
         public int width, height;
@@ -317,7 +317,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow drawable;
         public int x, y;
         public int width, height;
@@ -332,7 +332,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow drawable;
         public XRequestCodes major_code;         /* core is CopyArea or CopyPlane */
         public int minor_code;
@@ -344,7 +344,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;
         public int state;
     }
@@ -355,7 +355,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow parent;          /* parent of the window */
         public XWindow window;          /* window id of window created */
         public int x, y;               /* window location */
@@ -370,7 +370,7 @@ namespace X11
         public int type;
         public ulong serial;
         public bool send_event;
-        public IntPtr display;
+        public nint display;
         public XWindow parent;
         public XWindow window;
     }
@@ -381,7 +381,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public IntPtr display;   /* Display the event was read from */
+        public nint display;   /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         public bool override_redirect; /* boolean, is override set... */
@@ -393,7 +393,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public IntPtr display;   /* Display the event was read from */
+        public nint display;   /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         public bool from_configure;
@@ -408,7 +408,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public IntPtr display;   /* Display the event was read from */
+        public nint display;   /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
     }
@@ -419,7 +419,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         public int x, y;
@@ -431,7 +431,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;
         public int width, height;
     }
@@ -442,7 +442,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         public int place;
@@ -454,7 +454,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow parent;
         public XWindow window;
         public int place;
@@ -466,7 +466,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;
         public XAtom atom;
         public long time;
@@ -479,7 +479,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;
         public XAtom selection;
         public long time;
@@ -491,7 +491,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow owner;
         public XWindow requestor;
         public XAtom selection;
@@ -506,7 +506,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow requestor;
         public XAtom selection;
         public XAtom target;
@@ -520,7 +520,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;
         public XColormap colormap;      /* COLORMAP or None */
         public bool @new;
@@ -533,11 +533,11 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;
         public XAtom message_type;
         public int format;
-        public IntPtr data;
+        public nint data;
     }
 
     [StructLayout(LayoutKind.Sequential, Size = (24 * sizeof(long)))]
@@ -546,7 +546,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public IntPtr display;       /* Display the event was read from */
+        public nint display;       /* Display the event was read from */
         public XWindow window;          /* unused */
         public XMappingType request;            /* one of MappingModifier, MappingKeyboard,
                                    MappingPointer */
@@ -561,7 +561,7 @@ namespace X11
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public IntPtr display;   /* Display the event was read from */
+        public nint display;   /* Display the event was read from */
         public XWindow parent;
         public XWindow window;
         public int x;
@@ -584,7 +584,7 @@ namespace X11
         public int type;               /* ReparentNotify */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public IntPtr display;   /* Display the event was read from */
+        public nint display;   /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         /// <summary>
@@ -607,7 +607,7 @@ namespace X11
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XNextEvent(IntPtr display, IntPtr event_return);
+        public static extern XStatus XNextEvent(nint display, nint event_return);
 
         /// <summary>
         /// The XPeekEvent function returns the first event from the event queue, but it does not remove the event from
@@ -618,7 +618,7 @@ namespace X11
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XPeekEvent(IntPtr display, IntPtr event_return);
+        public static extern XStatus XPeekEvent(nint display, nint event_return);
 
         /// <summary>
         /// The XWindowEvent function searches the event queue for an event that matches both the specified window and
@@ -632,7 +632,7 @@ namespace X11
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XWindowEvent(IntPtr display, XWindow window, XEventMask mask, IntPtr event_return);
+        public static extern XStatus XWindowEvent(nint display, XWindow window, XEventMask mask, nint event_return);
 
         /// <summary>
         /// The XCheckWindowEvent function searches the event queue and then the events available on the server connection
@@ -647,7 +647,7 @@ namespace X11
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XCheckWindowEvent(IntPtr display, XWindow window, XEventMask mask, IntPtr event_return);
+        public static extern XStatus XCheckWindowEvent(nint display, XWindow window, XEventMask mask, nint event_return);
 
         /// <summary>
         /// The XMaskEvent function searches the event queue for the events associated with the specified mask.  When it
@@ -660,7 +660,7 @@ namespace X11
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XMaskEvent(IntPtr display, XEventMask mask, IntPtr event_return);
+        public static extern XStatus XMaskEvent(nint display, XEventMask mask, nint event_return);
 
         /// <summary>
         /// The XCheckMaskEvent function searches the event queue and then any events available on the server connection
@@ -674,7 +674,7 @@ namespace X11
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern bool XCheckMaskEvent(IntPtr display, XEventMask mask, IntPtr event_return);
+        public static extern bool XCheckMaskEvent(nint display, XEventMask mask, nint event_return);
 
         /// <summary>
         /// The XCheckTypedEvent function searches the event queue and then any events available on the server connection
@@ -688,7 +688,7 @@ namespace X11
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern bool XCheckTypedEvent(IntPtr display, XEvent type, IntPtr event_return);
+        public static extern bool XCheckTypedEvent(nint display, XEvent type, nint event_return);
 
         /// <summary>
         /// The XCheckTypedWindowEvent function searches the event queue and then any events available on the server con‐
@@ -703,7 +703,7 @@ namespace X11
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern bool XCheckTypedWindowEvent(IntPtr display, XWindow window, XEvent type, IntPtr event_return);
+        public static extern bool XCheckTypedWindowEvent(nint display, XWindow window, XEvent type, nint event_return);
 
         /// <summary>
         /// The XSync function flushes the output buffer and then waits until all requests have been received and pro‐
@@ -718,7 +718,7 @@ namespace X11
         /// <param name="discard">Discard queued events</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSync(IntPtr display, bool discard);
+        public static extern XStatus XSync(nint display, bool discard);
 
         /// <summary>
         /// The XFlush function flushes the output buffer.  Most client applications need not use this function because
@@ -728,7 +728,7 @@ namespace X11
         /// <param name="display">Connected display </param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XFlush(IntPtr display);
+        public static extern XStatus XFlush(nint display);
 
         /// <summary>
         /// If mode is QueuedAlready, XEventsQueued returns the number of events already in the event queue (and never
@@ -747,7 +747,7 @@ namespace X11
         /// <param name="mode">Mode of operation</param>
         /// <returns>Number of queued events</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XEventsQueued(IntPtr display, XQueueMode mode);
+        public static extern int XEventsQueued(nint display, XQueueMode mode);
 
         /// <summary>
         /// The XPending function returns the number of events that have been received from the X server but have not been
@@ -757,18 +757,18 @@ namespace X11
         /// <param name="display">Connected display</param>
         /// <returns>Number of events pending removal from the queue</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XPending(IntPtr display);
+        public static extern int XPending(nint display);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSendEvent(IntPtr display, XWindow window, bool propagate, long event_mask, IntPtr event_send);
+        public static extern XStatus XSendEvent(nint display, XWindow window, bool propagate, long event_mask, nint event_send);
 
         [DllImport("libX11.so.6")]
-        public static extern X11.XAtom XInternAtom(IntPtr display, string name, bool only_if_exists);
+        public static extern X11.XAtom XInternAtom(nint display, string name, bool only_if_exists);
 
         [DllImport("libX11.so.6")]
-        public static extern String XGetAtomName(IntPtr display, X11.XAtom atom);
+        public static extern String XGetAtomName(nint display, X11.XAtom atom);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSetWMProtocols(IntPtr display, XWindow window, ref XAtom protocols, int count);
+        public static extern XStatus XSetWMProtocols(nint display, XWindow window, ref XAtom protocols, int count);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace X11
+namespace XLibSharp
 {
     public class XTest
     {
@@ -15,7 +15,7 @@ namespace X11
         /// <param name="delay">Delay in milliseconds prior to performing the action</param>
         /// <returns></returns>
         [DllImport("libXtst.so")]
-        public static extern int XTestFakeMotionEvent(IntPtr display, int screen_number, int x, int y, ulong delay);
+        public static extern int XTestFakeMotionEvent(nint display, int screen_number, int x, int y, ulong delay);
 
         /// <summary>
         /// Request that the server simulate a button press/depress at the current pointer location.
@@ -26,7 +26,7 @@ namespace X11
         /// <param name="delay">delay in milliseconds before performing the action</param>
         /// <returns></returns>
         [DllImport("libXtst.so")]
-        public static extern int XTestFakeButtonEvent(IntPtr display, XButton button, int is_press, ulong delay);
+        public static extern int XTestFakeButtonEvent(nint display, XButton button, int is_press, ulong delay);
 
         /// <summary>
         /// Request that the server simulate keystrokes.
@@ -37,6 +37,6 @@ namespace X11
         /// <param name="delay">delay in milliseconds before performing the action</param>
         /// <returns></returns>
         [DllImport("libXtst.so")]
-        public static extern int XTestFakeKeyEvent(IntPtr display, X11.XKeyCode code, bool is_press, ulong delay);
+        public static extern int XTestFakeKeyEvent(nint display, X11.XKeyCode code, bool is_press, ulong delay);
     }
 }

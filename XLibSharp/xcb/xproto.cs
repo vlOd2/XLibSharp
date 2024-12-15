@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace X11
+namespace XLibSharp
 {
     public partial class xcb
     {
@@ -70,18 +70,18 @@ namespace X11
         }
 
         [DllImport("libxcb.so")]
-        public static extern xcb_query_tree_cookie_t xcb_query_tree(IntPtr Connection, XWindow Window);
+        public static extern xcb_query_tree_cookie_t xcb_query_tree(nint Connection, XWindow Window);
 
         [DllImport("libxcb.so")]
-        private static extern IntPtr xcb_query_tree_reply
-            (IntPtr Connection, xcb_query_tree_cookie_t cookie, ref IntPtr error);
+        private static extern nint xcb_query_tree_reply
+            (nint Connection, xcb_query_tree_cookie_t cookie, ref nint error);
 
         public unsafe static xcb_query_tree_reply_t? query_tree_reply 
-            (IntPtr Connection, xcb_query_tree_cookie_t Cookie, out xcb_generic_error_t? Error)
+            (nint Connection, xcb_query_tree_cookie_t Cookie, out xcb_generic_error_t? Error)
         {
-            IntPtr err = IntPtr.Zero;
+            nint err = nint.Zero;
             var reply = xcb_query_tree_reply(Connection, Cookie, ref err);
-            if (reply == IntPtr.Zero)
+            if (reply == nint.Zero)
             {
                 Error = Marshal.PtrToStructure<xcb_generic_error_t>(err);
                 return new xcb_query_tree_reply_t();
@@ -98,7 +98,7 @@ namespace X11
 
 
         [DllImport("libxcb.so")]
-        private static extern IntPtr xcb_query_tree_children(in xcb_query_tree_reply_t Reply);
+        private static extern nint xcb_query_tree_children(in xcb_query_tree_reply_t Reply);
 
         [StructLayout(LayoutKind.Sequential)]
         public struct xcb_void_cookie_t
@@ -113,7 +113,7 @@ namespace X11
         }
 
         [DllImport("libxcb.so")]
-        public static extern xcb_void_cookie_t xcb_change_window_attributes(IntPtr Connection, XWindow Window, UInt32 ValueMask, IntPtr ValueList);
+        public static extern xcb_void_cookie_t xcb_change_window_attributes(nint Connection, XWindow Window, UInt32 ValueMask, nint ValueList);
 
         [StructLayout(LayoutKind.Sequential, Size = (9 * sizeof(UInt32)))]
         public struct xcb_generic_error_t
@@ -128,11 +128,11 @@ namespace X11
         }
 
         [DllImport("libxcb.so")]
-        private static extern IntPtr xcb_request_check(IntPtr Connection, xcb_void_cookie_t Cookie);
-        public static xcb_generic_error_t? request_check(IntPtr Connection, xcb_void_cookie_t Cookie)
+        private static extern nint xcb_request_check(nint Connection, xcb_void_cookie_t Cookie);
+        public static xcb_generic_error_t? request_check(nint Connection, xcb_void_cookie_t Cookie)
         {
             var err = xcb_request_check(Connection, Cookie);
-            return (err == IntPtr.Zero) ? new xcb_generic_error_t?() : Marshal.PtrToStructure<xcb_generic_error_t>(err);
+            return (err == nint.Zero) ? new xcb_generic_error_t?() : Marshal.PtrToStructure<xcb_generic_error_t>(err);
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -159,18 +159,18 @@ namespace X11
         [StructLayout(LayoutKind.Sequential)]
         public unsafe struct xcb_screen_iterator_t
         {
-            public IntPtr data;
+            public nint data;
             public int rem;
             public int index;
         }
 
         [DllImport("libxcb.so")]
         public static extern xcb_void_cookie_t
-            xcb_change_window_attributes_checked(IntPtr Connection, XWindow Window, xcb_cw_t value_mask, ref xcb_event_mask values);
+            xcb_change_window_attributes_checked(nint Connection, XWindow Window, xcb_cw_t value_mask, ref xcb_event_mask values);
 
         [DllImport("libxcb.so")]
-        private static extern xcb_void_cookie_t xcb_grab_server_checked(IntPtr Connection);
-        public static void grab_server(IntPtr Connection)
+        private static extern xcb_void_cookie_t xcb_grab_server_checked(nint Connection);
+        public static void grab_server(nint Connection)
         {
             var cookie = xcb_grab_server_checked(Connection);
             xcb_generic_error_t? Error;
@@ -182,8 +182,8 @@ namespace X11
         }
 
         [DllImport("libxcb.so")]
-        private static extern xcb_void_cookie_t xcb_ungrab_server_checked(IntPtr Connection);
-        public static void ungrab_server(IntPtr Connection)
+        private static extern xcb_void_cookie_t xcb_ungrab_server_checked(nint Connection);
+        public static void ungrab_server(nint Connection)
         {
             var cookie = xcb_ungrab_server_checked(Connection);
             xcb_generic_error_t? Error;
@@ -195,7 +195,7 @@ namespace X11
         }
 
 
-        public unsafe static int[] Children(IntPtr Connection, XWindow window)
+        public unsafe static int[] Children(nint Connection, XWindow window)
         {
             xcb_generic_error_t? Error;
             var cookie = xcb_query_tree(Connection, window);

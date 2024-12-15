@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-namespace X11
+namespace XLibSharp
 {
 
     [StructLayout(LayoutKind.Sequential)]
     public struct XErrorEvent
     {
         public int type;
-        public IntPtr display;
+        public nint display;
         public XID resourceid;
         public ulong serial;
         public byte error_code;
@@ -16,10 +16,10 @@ namespace X11
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate int XErrorHandlerDelegate(IntPtr display, ref XErrorEvent ev);
+    public delegate int XErrorHandlerDelegate(nint display, ref XErrorEvent ev);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate int XIOErrorHandlerDelegate(IntPtr display);
+    public delegate int XIOErrorHandlerDelegate(nint display);
 
     public partial class Xlib
     {
@@ -29,7 +29,7 @@ namespace X11
         /// <param name="del">Function delegate to call on error</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern IntPtr XSetErrorHandler(XErrorHandlerDelegate del);
+        public static extern nint XSetErrorHandler(XErrorHandlerDelegate del);
 
         /// <summary>
         /// The XSetIOErrorHandler sets the fatal I/O error handler.  Xlib calls the program's supplied error handler if
@@ -40,7 +40,7 @@ namespace X11
         /// <param name="del">Error handler function delegate</param>
         /// <returns>Previous error handler</returns>
         [DllImport("libX11.so.6")]
-        public static extern IntPtr XSetIOErrorHandler(XIOErrorHandlerDelegate del);
+        public static extern nint XSetIOErrorHandler(XIOErrorHandlerDelegate del);
 
         /// <summary>
         /// Return the error description corresponding to the error code
@@ -51,7 +51,7 @@ namespace X11
         /// <param name="length">Length of the descrition buffer</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGetErrorText(IntPtr display, int code, IntPtr description, int length);
+        public static extern XStatus XGetErrorText(nint display, int code, nint description, int length);
 
         /// <summary>
         /// The XGetErrorDatabaseText function returns a null-terminated message (or the default message) from the error
@@ -71,7 +71,7 @@ namespace X11
         /// <param name="length">Length of the buffer</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGetErrorDatabaseText(IntPtr display, string name, string message, string default_string,
-            IntPtr buffer_return, int length);
+        public static extern XStatus XGetErrorDatabaseText(nint display, string name, string message, string default_string,
+            nint buffer_return, int length);
     }
 }

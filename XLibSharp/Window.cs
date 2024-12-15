@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace X11
+namespace XLibSharp
 {
     public enum XPixmapFormat : int
     {
@@ -36,7 +36,7 @@ namespace X11
         public int width, height;
         public int xoffset;
         public int format;
-        public IntPtr data;
+        public nint data;
         public int byte_order;
         public int bitmap_unit;
         public int bitmap_bit_order;
@@ -47,15 +47,15 @@ namespace X11
         public ulong red_mask;
         public ulong green_mask;
         public ulong blue_mask;
-        public IntPtr obdata;
+        public nint obdata;
         private struct funcs
         {
-            IntPtr create_image;
-            IntPtr destroy_image;
-            IntPtr get_pixel;
-            IntPtr put_pixel;
-            IntPtr sub_image;
-            IntPtr add_pixel;
+            nint create_image;
+            nint destroy_image;
+            nint get_pixel;
+            nint put_pixel;
+            nint sub_image;
+            nint add_pixel;
         }
 
     }
@@ -67,7 +67,7 @@ namespace X11
         public uint width, height;
         public int border_width;
         public int depth;
-        public IntPtr visual;
+        public nint visual;
         public XWindow root;
         public int @class;
         public int bit_gravity;
@@ -83,7 +83,7 @@ namespace X11
         public long your_event_masks;
         public long do_not_propagate_mask;
         public bool override_redirect;
-        public IntPtr screen;
+        public nint screen;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -126,22 +126,22 @@ namespace X11
         /// <param name="window"></param>
         /// <param name="attributes"></param>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGetWindowAttributes(IntPtr display, XWindow window, out XWindowAttributes attributes);
+        public static extern XStatus XGetWindowAttributes(nint display, XWindow window, out XWindowAttributes attributes);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XDestroyWindow(IntPtr display, XWindow window);
+        public static extern XStatus XDestroyWindow(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XReparentWindow(IntPtr display, XWindow window, XWindow parent, int x, int y);
+        public static extern XStatus XReparentWindow(nint display, XWindow window, XWindow parent, int x, int y);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XAddToSaveSet(IntPtr display, XWindow window);
+        public static extern XStatus XAddToSaveSet(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XRemoveFromSaveSet(IntPtr dispay, XWindow window);
+        public static extern XStatus XRemoveFromSaveSet(nint dispay, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XChangeSaveSet(IntPtr display, XWindow window, XChangeMode change_mode);
+        public static extern XStatus XChangeSaveSet(nint display, XWindow window, XChangeMode change_mode);
 
         /// <summary>
         /// Returns a pointer which can be marshalled to an XImage object for field access in managed code.
@@ -157,21 +157,21 @@ namespace X11
         /// <param name="format">One of XYBitmap, XYPixmap, ZPixmap</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern ref XImage XGetImage(IntPtr display, XWindow drawable, int x, int y,
+        public static extern ref XImage XGetImage(nint display, XWindow drawable, int x, int y,
             uint width, uint height, ulong plane_mask, XPixmapFormat format);
 
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSelectInput(IntPtr display, XWindow window, XEventMask event_mask);
+        public static extern XStatus XSelectInput(nint display, XWindow window, XEventMask event_mask);
 
         [DllImport("libX11.so.6")]
-        private static extern int XQueryTree(IntPtr display, XWindow window, ref XWindow WinRootReturn,
-            ref XWindow WinParentReturn, ref IntPtr ChildrenReturn, ref uint nChildren);
-        public static int XQueryTree(IntPtr display, XWindow window, ref XWindow WinRootReturn,
+        private static extern int XQueryTree(nint display, XWindow window, ref XWindow WinRootReturn,
+            ref XWindow WinParentReturn, ref nint ChildrenReturn, ref uint nChildren);
+        public static int XQueryTree(nint display, XWindow window, ref XWindow WinRootReturn,
             ref XWindow WinParentReturn, out List<XWindow> ChildrenReturn)
         {
             ChildrenReturn = new List<XWindow>();
-            IntPtr pChildren = new IntPtr();
+            nint pChildren = new nint();
             uint nChildren = 0;
 
             var r = Xlib.XQueryTree(display, window, ref WinRootReturn, ref WinParentReturn,
@@ -179,7 +179,7 @@ namespace X11
 
             for (int i = 0; i < nChildren; i++)
             {
-                var ptr = new IntPtr(pChildren.ToInt64() + i * sizeof(XWindow));
+                var ptr = new nint(pChildren.ToInt64() + i * sizeof(XWindow));
                 ChildrenReturn.Add((XWindow)Marshal.ReadInt64(ptr));
             }
 
@@ -187,89 +187,89 @@ namespace X11
         }
 
         [DllImport("libX11.so.6")]
-        public static extern XWindow XCreateSimpleWindow(IntPtr display, XWindow parent, int x, int y,
+        public static extern XWindow XCreateSimpleWindow(nint display, XWindow parent, int x, int y,
             uint width, uint height, uint border_width, ulong border_colour, ulong background_colour);
 
         [DllImport("libX11.so.6")]
-        public static extern XWindow XCreateWindow(IntPtr display, XWindow parent, int x, int y, uint width,
-            uint height, uint border_width, int depth, uint @class, IntPtr visual, ulong valuemask,
+        public static extern XWindow XCreateWindow(nint display, XWindow parent, int x, int y, uint width,
+            uint height, uint border_width, int depth, uint @class, nint visual, ulong valuemask,
               ref XSetWindowAttributes attributes);
 
         [DllImport("libX11.so.6")]
-        public static extern int XMapWindow(IntPtr display, XWindow window);
+        public static extern int XMapWindow(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern int XUnmapWindow(IntPtr display, XWindow window);
+        public static extern int XUnmapWindow(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern int XConfigureWindow(IntPtr display, XWindow window, ulong value_mask, ref XWindowChanges changes);
+        public static extern int XConfigureWindow(nint display, XWindow window, ulong value_mask, ref XWindowChanges changes);
 
         [DllImport("libX11.so.6")]
-        public static extern int XSetWindowBackground(IntPtr display, XWindow window, ulong pixel);
+        public static extern int XSetWindowBackground(nint display, XWindow window, ulong pixel);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSetWindowBorder(IntPtr display, XWindow window, ulong border_pixel);
+        public static extern XStatus XSetWindowBorder(nint display, XWindow window, ulong border_pixel);
 
         [DllImport("libX11.so.6")]
-        public static extern int XClearWindow(IntPtr display, XWindow window);
+        public static extern int XClearWindow(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern int XMoveWindow(IntPtr display, XWindow window, int x, int y);
+        public static extern int XMoveWindow(nint display, XWindow window, int x, int y);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XResizeWindow(IntPtr display, XWindow window, uint width, uint height);
+        public static extern XStatus XResizeWindow(nint display, XWindow window, uint width, uint height);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XMoveResizeWindow(IntPtr display, XWindow window, int x, int y, uint width, uint height);
+        public static extern XStatus XMoveResizeWindow(nint display, XWindow window, int x, int y, uint width, uint height);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSetWindowBorderWidth(IntPtr display, XWindow window, uint width);
+        public static extern XStatus XSetWindowBorderWidth(nint display, XWindow window, uint width);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSetInputFocus(IntPtr display, XWindow focus, XRevertFocus revert_to, long time);
+        public static extern XStatus XSetInputFocus(nint display, XWindow focus, XRevertFocus revert_to, long time);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGetInputFocus(IntPtr display, ref XWindow focus_return, ref XRevertFocus revert_to_return);
+        public static extern XStatus XGetInputFocus(nint display, ref XWindow focus_return, ref XRevertFocus revert_to_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XRaiseWindow(IntPtr display, XWindow window);
+        public static extern XStatus XRaiseWindow(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XLowerWindow(IntPtr display, XWindow window);
+        public static extern XStatus XLowerWindow(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XCirculateSubwindows(IntPtr display, XWindow window, XDirection direction);
+        public static extern XStatus XCirculateSubwindows(nint display, XWindow window, XDirection direction);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XCirculateSubwindowsUp(IntPtr display, XWindow window);
+        public static extern XStatus XCirculateSubwindowsUp(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XCirculateSubwindowsDown(IntPtr display, XWindow window);
+        public static extern XStatus XCirculateSubwindowsDown(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XRestackWindows(IntPtr display, IntPtr windows, int nwindows);
+        public static extern XStatus XRestackWindows(nint display, nint windows, int nwindows);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XFetchName(IntPtr display, XWindow window, ref String name_return);
+        public static extern XStatus XFetchName(nint display, XWindow window, ref String name_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XStoreName(IntPtr display, XWindow window, string window_name);
+        public static extern XStatus XStoreName(nint display, XWindow window, string window_name);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XDrawString(IntPtr display, XWindow drawable, IntPtr gc, int x, int y, string str, int length);
+        public static extern XStatus XDrawString(nint display, XWindow drawable, nint gc, int x, int y, string str, int length);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSetSelectionOwner(IntPtr display, XAtom atom, XWindow window, long time);
+        public static extern XStatus XSetSelectionOwner(nint display, XAtom atom, XWindow window, long time);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGetSelectionOwner(IntPtr display, XAtom atom, XWindow window, long time);
+        public static extern XStatus XGetSelectionOwner(nint display, XAtom atom, XWindow window, long time);
 
         [DllImport("libX11.so.6")]
-        public static extern bool XQueryPointer(IntPtr display, XWindow window, ref XWindow window_return, ref XWindow child_return,
+        public static extern bool XQueryPointer(nint display, XWindow window, ref XWindow window_return, ref XWindow child_return,
             ref int root_x, ref int root_y, ref int win_x, ref int win_y, ref uint mask);
 
         [DllImport("libX11.so.6")]
-        public static extern int XGetGeometry(IntPtr display, XWindow drawable, ref XWindow root,
+        public static extern int XGetGeometry(nint display, XWindow drawable, ref XWindow root,
             ref int x, ref int y, ref uint width, ref uint height, ref uint border, ref uint depth);
     }
 
