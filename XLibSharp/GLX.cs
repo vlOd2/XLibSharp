@@ -20,33 +20,33 @@ namespace XLibSharp
     public static class GLX
     {
         #region Tokens for glXChooseVisual and glXGetConfig
-        public const uint GLX_USE_GL = 1;
-        public const uint GLX_BUFFER_SIZE = 2;
-        public const uint GLX_LEVEL = 3;
-        public const uint GLX_RGBA = 4;
-        public const uint GLX_DOUBLEBUFFER = 5;
-        public const uint GLX_STEREO = 6;
-        public const uint GLX_AUX_BUFFERS = 7;
-        public const uint GLX_RED_SIZE = 8;
-        public const uint GLX_GREEN_SIZE = 9;
-        public const uint GLX_BLUE_SIZE = 10;
-        public const uint GLX_ALPHA_SIZE = 11;
-        public const uint GLX_DEPTH_SIZE = 12;
-        public const uint GLX_STENCIL_SIZE = 13;
-        public const uint GLX_ACCUM_RED_SIZE = 14;
-        public const uint GLX_ACCUM_GREEN_SIZE = 15;
-        public const uint GLX_ACCUM_BLUE_SIZE = 16;
-        public const uint GLX_ACCUM_ALPHA_SIZE = 17;
+        public const int GLX_USE_GL = 1;
+        public const int GLX_BUFFER_SIZE = 2;
+        public const int GLX_LEVEL = 3;
+        public const int GLX_RGBA = 4;
+        public const int GLX_DOUBLEBUFFER = 5;
+        public const int GLX_STEREO = 6;
+        public const int GLX_AUX_BUFFERS = 7;
+        public const int GLX_RED_SIZE = 8;
+        public const int GLX_GREEN_SIZE = 9;
+        public const int GLX_BLUE_SIZE = 10;
+        public const int GLX_ALPHA_SIZE = 11;
+        public const int GLX_DEPTH_SIZE = 12;
+        public const int GLX_STENCIL_SIZE = 13;
+        public const int GLX_ACCUM_RED_SIZE = 14;
+        public const int GLX_ACCUM_GREEN_SIZE = 15;
+        public const int GLX_ACCUM_BLUE_SIZE = 16;
+        public const int GLX_ACCUM_ALPHA_SIZE = 17;
         #endregion
 
         #region Error codes returned by glXGetConfig
-        public const uint GLX_BAD_SCREEN = 1;
-        public const uint GLX_BAD_ATTRIBUTE = 2;
-        public const uint GLX_NO_EXTENSION = 3;
-        public const uint GLX_BAD_VISUAL = 4;
-        public const uint GLX_BAD_CONTEXT = 5;
-        public const uint GLX_BAD_VALUE = 6;
-        public const uint GLX_BAD_ENUM = 7;
+        public const int GLX_BAD_SCREEN = 1;
+        public const int GLX_BAD_ATTRIBUTE = 2;
+        public const int GLX_NO_EXTENSION = 3;
+        public const int GLX_BAD_VISUAL = 4;
+        public const int GLX_BAD_CONTEXT = 5;
+        public const int GLX_BAD_VALUE = 6;
+        public const int GLX_BAD_ENUM = 7;
         #endregion
 
         #region GLX 1.0 and later
@@ -108,9 +108,9 @@ namespace XLibSharp
         #endregion
 
         #region GLX 1.1 and later
-        public const uint GLX_VENDOR = 1;
-        public const uint GLX_VERSION = 2;
-        public const uint GLX_EXTENSIONS = 3;
+        public const int GLX_VENDOR = 1;
+        public const int GLX_VERSION = 2;
+        public const int GLX_EXTENSIONS = 3;
 
         [DllImport("libGLX.so.0")]
         public static extern string glXQueryExtensionsString(XDisplay dpy, int screen);

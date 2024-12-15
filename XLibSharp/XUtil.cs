@@ -2,7 +2,7 @@
 
 namespace XLibSharp
 {
-    public class Xutil
+    public class XUtil
     {
         /// <summary>
         /// Free a previously allocated XImage.

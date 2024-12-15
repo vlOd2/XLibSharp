@@ -3,11 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace XLibSharp
 {
-    public enum XWindow : ulong
-    {
-        None = 0,
-    }
-
     public enum XKeySym : long
     {
         NoSymbol = 0,

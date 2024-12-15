@@ -1,5 +1,5 @@
 global using XID = ulong;
-global using XWindow = uint;
+global using XWindow = ulong;
 global using XDisplay = nint;
 global using XKeyCode = byte;
 global using XColormap = ulong;

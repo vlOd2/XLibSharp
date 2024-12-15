@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 namespace XLibSharp
 {
@@ -96,6 +97,25 @@ namespace XLibSharp
         public XCursor cursor;
     }
 
+    public enum XAttributeMask : ulong
+    {
+        CW_BACK_PIXMAP = 1,
+        CW_BACK_PIXEL = 2,
+        CW_BORDER_PIXMAP = 4,
+        CW_BORDER_PIXEL = 8,
+        CW_BIT_GRAVITY = 16,
+        CW_WIN_GRAVITY = 32,
+        CW_BACKING_STORE = 64,
+        CW_BACKING_PLANES = 128,
+        CW_BACKING_PIXEL = 256,
+        CW_OVERRIDE_REDIRECT = 512,
+        CW_SAVE_UNDER = 1024,
+        CW_EVENT_MASK = 2048,
+        CW_DONT_PROPAGATE = 4096,
+        CW_COLORMAP = 8192,
+        CW_CURSOR = 16384
+    }
+
     [StructLayout(LayoutKind.Sequential)]
     public struct XWindowChanges
     {
@@ -156,7 +176,7 @@ namespace XLibSharp
         [DllImport("libX11.so.6")]
         private static extern int XQueryTree(nint display, XWindow window, ref XWindow WinRootReturn,
             ref XWindow WinParentReturn, ref nint ChildrenReturn, ref uint nChildren);
-            
+
         public static int XQueryTree(nint display, XWindow window, ref XWindow WinRootReturn,
             ref XWindow WinParentReturn, out List<XWindow> ChildrenReturn)
         {
@@ -180,7 +200,7 @@ namespace XLibSharp
 
         [DllImport("libX11.so.6")]
         public static extern XWindow XCreateWindow(nint display, XWindow parent, int x, int y, uint width,
-            uint height, uint border_width, int depth, uint @class, nint visual, ulong valuemask,
+            uint height, uint border_width, int depth, uint @class, nint visual, XAttributeMask valuemask,
               ref XSetWindowAttributes attributes);
 
         [DllImport("libX11.so.6")]
