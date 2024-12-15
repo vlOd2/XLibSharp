@@ -156,23 +156,22 @@ namespace XLibSharp
         [DllImport("libX11.so.6")]
         private static extern int XQueryTree(nint display, XWindow window, ref XWindow WinRootReturn,
             ref XWindow WinParentReturn, ref nint ChildrenReturn, ref uint nChildren);
+            
         public static int XQueryTree(nint display, XWindow window, ref XWindow WinRootReturn,
             ref XWindow WinParentReturn, out List<XWindow> ChildrenReturn)
         {
             ChildrenReturn = new List<XWindow>();
             nint pChildren = new nint();
             uint nChildren = 0;
-
-            var r = XLib.XQueryTree(display, window, ref WinRootReturn, ref WinParentReturn,
-                ref pChildren, ref nChildren);
+            int result = XQueryTree(display, window, ref WinRootReturn, ref WinParentReturn, ref pChildren, ref nChildren);
 
             for (int i = 0; i < nChildren; i++)
             {
-                var ptr = new nint(pChildren.ToInt64() + i * sizeof(XWindow));
+                nint ptr = new nint(pChildren.ToInt64() + i * sizeof(XWindow));
                 ChildrenReturn.Add((XWindow)Marshal.ReadInt64(ptr));
             }
 
-            return r;
+            return result;
         }
 
         [DllImport("libX11.so.6")]
