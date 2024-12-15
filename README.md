@@ -6,7 +6,7 @@ An example application is provided that uses both XLib and GLX<br>
 ***⚠ It is using a slim version of LegacyGL (AGPLV3) as you have to provide your own GL bindings***
 
 # ♥ Fork
-This project is a fork of [X11.Net](https://github.com/ajnewlands/X11.Net)
+This project is a fork of [X11.Net](https://github.com/ajnewlands/X11.Net)<br>
 Thanks to Andrew Newlands for his amazing work
 
 # ⚖ License
