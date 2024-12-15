@@ -196,12 +196,12 @@ namespace XLibSharp
 
         [DllImport("libX11.so.6")]
         public static extern XWindow XCreateSimpleWindow(nint display, XWindow parent, int x, int y,
-            uint width, uint height, uint border_width, ulong border_colour, ulong background_colour);
+            int width, int height, uint border_width, ulong border_colour, ulong background_colour);
 
         [DllImport("libX11.so.6")]
-        public static extern XWindow XCreateWindow(nint display, XWindow parent, int x, int y, uint width,
-            uint height, uint border_width, int depth, uint @class, nint visual, XAttributeMask valuemask,
-              ref XSetWindowAttributes attributes);
+        public static extern XWindow XCreateWindow(nint display, XWindow parent, int x, int y, int width,
+            int height, uint border_width, int depth, uint @class, nint visual, XAttributeMask valuemask,
+            ref XSetWindowAttributes attributes);
 
         [DllImport("libX11.so.6")]
         public static extern int XMapWindow(nint display, XWindow window);

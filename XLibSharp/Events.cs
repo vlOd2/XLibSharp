@@ -570,6 +570,24 @@ namespace XLibSharp
         public ulong value_mask;
     }
 
+    [StructLayout(LayoutKind.Sequential, Size = (24 * sizeof(long)))]
+    public struct XConfigureNotifyEvent
+    {
+        public int type;
+        public ulong serial;   /* # of last request processed by server */
+        public bool send_event;    /* true if this came from a SendEvent request */
+        public nint display;   /* Display the event was read from */
+        public XWindow parent;
+        public XWindow window;
+        public int x;
+        public int y;
+        public int width;
+        public int height;
+        public int border_width;
+        public XWindow above;
+        public bool override_redirect;
+    }
+
     /// <summary>
     /// Raised to notify the X window manager that a window has changed parents.
     /// </summary>

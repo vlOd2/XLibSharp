@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Runtime.InteropServices;
 using XLibSharp;
 using static XLibSharp.XLib;
 using static XLibSharp.GLX;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.InteropServices;
+using static GL;
 
 public class Program
 {
@@ -14,9 +13,10 @@ public class Program
     private XVisualInfo visualInfo;
     private ulong colorMap;
     private ulong window;
-    private uint windowWidth = 800;
-    private uint windowHeight = 600;
+    private int windowWidth = 800;
+    private int windowHeight = 600;
     private nint context;
+    private GLAPILoader loader;
 
     private int ErrorHandler(nint display, ref XErrorEvent e)
     {
@@ -47,6 +47,7 @@ public class Program
         {
             glXMakeCurrent(display, 0, nint.Zero);
             glXDestroyContext(display, context);
+            loader.Unload();
         }
         XFreeColormap(display, colorMap);
         XDestroyWindow(display, window);
@@ -95,6 +96,8 @@ public class Program
     {
         context = glXCreateContext(display, visualInfoPtr, 0, true);
         glXMakeCurrent(display, window, context);
+        loader = new GLAPILoader(new X11GLLookup());
+        loader.Load();
     }
 
     private void PollEvents(ulong wmDeleteWindow)
@@ -115,6 +118,26 @@ public class Program
                         Destroy(0);
                     break;
                 }
+
+            case XEvent.ConfigureNotify:
+                {
+                    XConfigureNotifyEvent e = Marshal.PtrToStructure<XConfigureNotifyEvent>(eventPtr);
+                    int w = e.width;
+                    int h = e.height;
+
+                    if (w == windowWidth && h == windowHeight)
+                        break;
+
+                    if (w < 1) w = 1;
+                    if (h < 1) h = 1;
+
+                    Console.WriteLine($"Resize: {windowWidth},{windowHeight} -> {w},{h}");
+                    windowWidth = w;
+                    windowHeight = h;
+                    glViewport(0, 0, windowWidth, windowHeight);
+
+                    break;
+                }
         }
     }
 
@@ -129,8 +152,20 @@ public class Program
         if (XSetWMProtocols(display, window, ref wmDeleteWindow, 1) == XStatus.Failure)
             Console.Error.WriteLine("WM_DELETE_WINDOW failed");
 
+        glClearColor(1.0F, 0.0F, 0.0F, 1.0F);
+        glViewport(0, 0, windowWidth, windowHeight);
+
         while (true)
         {
+            glClear(GL_COLOR_BUFFER_BIT);
+
+            glColor3f(0.0F, 1.0F, 0.0F);
+            glBegin(GL_TRIANGLES);
+            glVertex3f(-0.5F, -0.5F, -1.0F);
+            glVertex3f(0.5F, -0.5F, -1.0F);
+            glVertex3f(0.0F, 0.5F, -1.0F);
+            glEnd();
+
             glXSwapBuffers(display, window);
             PollEvents((ulong)wmDeleteWindow);
         }
