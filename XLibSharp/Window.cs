@@ -204,6 +204,10 @@ namespace XLibSharp
             ref XSetWindowAttributes attributes);
 
         [DllImport("libX11.so.6")]
+        public static extern int XChangeWindowAttributes(nint display, XWindow window, XAttributeMask valuemask,
+            ref XSetWindowAttributes attributes);
+        
+        [DllImport("libX11.so.6")]
         public static extern int XMapWindow(nint display, XWindow window);
 
         [DllImport("libX11.so.6")]
