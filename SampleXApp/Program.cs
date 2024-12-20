@@ -15,7 +15,6 @@ public class Program
     private int windowWidth = 800;
     private int windowHeight = 600;
     private nint context;
-    private GLAPILoader loader;
 
     private int ErrorHandler(nint display, ref XErrorEvent e)
     {
@@ -46,7 +45,6 @@ public class Program
         {
             glXMakeCurrent(display, 0, nint.Zero);
             glXDestroyContext(display, context);
-            loader.Unload();
         }
         XFreeColormap(display, colorMap);
         XDestroyWindow(display, window);
@@ -95,8 +93,6 @@ public class Program
     {
         context = glXCreateContext(display, visualInfoPtr, 0, true);
         glXMakeCurrent(display, window, context);
-        loader = new GLAPILoader(new X11GLLookup());
-        loader.Load();
     }
 
     private void PollEvents(ulong wmDeleteWindow)
