@@ -315,7 +315,7 @@ namespace XLibSharp
         public static extern XStatus XRestackWindows(XDisplay display, nint windows, int nwindows);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XFetchName(XDisplay display, XWindow window, ref String name_return);
+        public static extern XStatus XFetchName(XDisplay display, XWindow window, ref string name_return);
 
         [DllImport("libX11.so.6")]
         public static extern XStatus XStoreName(XDisplay display, XWindow window, string window_name);
