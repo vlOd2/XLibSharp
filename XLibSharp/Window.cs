@@ -355,5 +355,8 @@ namespace XLibSharp
 
         [DllImport("libX11.so.6")]
         public static extern nint XAllocSizeHints();
+
+        [DllImport("libX11.so.6")]
+        public static extern XKeySym XLookupKeysym(uint key_event, int index);
     }
 }

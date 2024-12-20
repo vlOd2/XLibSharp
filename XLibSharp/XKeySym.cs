@@ -1,7 +1,8 @@
 namespace XLibSharp
 {
-    public enum Keysym : uint
+    public enum XKeySym : long
     {
+        NoSymbol = 0,
         XK_VoidSymbol = 0xffffff,
         XK_BackSpace = 0xff08,
         XK_Tab = 0xff09,

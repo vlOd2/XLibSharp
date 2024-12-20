@@ -3,12 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace XLibSharp
 {
-    public enum XKeySym : long
-    {
-        NoSymbol = 0,
-        XK_r = 0x0072,
-    }
-
     public enum XButton : uint
     {
         LEFT = 1,
