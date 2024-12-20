@@ -21,7 +21,7 @@ namespace XLibSharp
         /// <param name="depth">Pixmap depth</param>
         /// <returns>Returned Pixmap</returns>
         [DllImport("libX11.so.6")]
-        public static extern XPixmap XCreatePixmap(nint display, XWindow drawable, uint width, uint height, uint depth);
+        public static extern XPixmap XCreatePixmap(XDisplay display, XWindow drawable, uint width, uint height, uint depth);
 
         /// <summary>
         /// The XFreePixmap function first deletes the association between the pixmap ID and the pixmap.  Then, the X
@@ -32,6 +32,6 @@ namespace XLibSharp
         /// <param name="pixmap">Pixmap to free</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XFreePixmap(nint display, XPixmap pixmap);
+        public static extern XStatus XFreePixmap(XDisplay display, XPixmap pixmap);
     }
 }

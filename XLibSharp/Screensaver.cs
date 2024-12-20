@@ -37,23 +37,23 @@ namespace XLibSharp
     public partial class XLib
     {
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSetScreenSaver(nint display, int timeout, int interval, XScreenSaverBlanking prefer_blanking, 
+        public static extern XStatus XSetScreenSaver(XDisplay display, int timeout, int interval, XScreenSaverBlanking prefer_blanking, 
             XScreenSaverExposures allow_exposures);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XForceScreenSaver(nint display, XScreenSaverMode mode);
+        public static extern XStatus XForceScreenSaver(XDisplay display, XScreenSaverMode mode);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XActivateScreenSaver(nint display);
+        public static extern XStatus XActivateScreenSaver(XDisplay display);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XResetScreenSaver(nint display);
+        public static extern XStatus XResetScreenSaver(XDisplay display);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGetScreenSaver(nint display, ref int timeout_return, ref int interval_return, 
+        public static extern XStatus XGetScreenSaver(XDisplay display, ref int timeout_return, ref int interval_return, 
             ref XScreenSaverBlanking prefer_blanking_return, ref XScreenSaverExposures allow_exposures_return);
 
         [DllImport("libXss.so.1")]
-        public static extern XStatus XScreenSaverQueryInfo(nint display, XWindow drawable, ref XScreenSaverInfo saver_info);
+        public static extern XStatus XScreenSaverQueryInfo(XDisplay display, XWindow drawable, ref XScreenSaverInfo saver_info);
     }
 }

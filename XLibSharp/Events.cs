@@ -194,7 +194,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;
         public bool send_event;
-        public nint display;
+        public XDisplay display;
         public XWindow window;
     }
 
@@ -204,7 +204,7 @@ namespace XLibSharp
         public int type;               /* of event */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;          /* "event" window it is reported relative to */
         public XWindow root;            /* root window that the event occurred on */
         public XWindow subwindow;       /* child window */
@@ -222,7 +222,7 @@ namespace XLibSharp
         public int type;       /* of event */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public nint display;   /* Display the event was read from */
+        public XDisplay display;   /* Display the event was read from */
         public XWindow window;          /* "event" window it is reported relative to */
         public XWindow root;            /* root window that the event occurred on */
         public XWindow subwindow;   /* child window */
@@ -240,7 +240,7 @@ namespace XLibSharp
         public int type;               /* of event */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;          /* "event" window reported relative to */
         public XWindow root;            /* root window that the event occurred on */
         public XWindow subwindow;       /* child window */
@@ -258,7 +258,7 @@ namespace XLibSharp
         public int type;               /* of event */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;          /* "event" window reported relative to */
         public XWindow root;            /* root window that the event occurred on */
         public XWindow subwindow;       /* child window */
@@ -278,7 +278,7 @@ namespace XLibSharp
         public int type;               /* FocusIn or FocusOut */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;          /* window of event */
         XNotifyMode mode;
         XNotifyDetail detail;
@@ -290,7 +290,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;
         public byte[] key_vector; // 32 byte vector
     }
@@ -301,7 +301,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;
         public int x, y;
         public int width, height;
@@ -314,7 +314,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow drawable;
         public int x, y;
         public int width, height;
@@ -329,7 +329,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow drawable;
         public XRequestCodes major_code;         /* core is CopyArea or CopyPlane */
         public int minor_code;
@@ -341,7 +341,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;
         public int state;
     }
@@ -352,7 +352,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow parent;          /* parent of the window */
         public XWindow window;          /* window id of window created */
         public int x, y;               /* window location */
@@ -367,7 +367,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;
         public bool send_event;
-        public nint display;
+        public XDisplay display;
         public XWindow parent;
         public XWindow window;
     }
@@ -378,7 +378,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public nint display;   /* Display the event was read from */
+        public XDisplay display;   /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         public bool override_redirect; /* boolean, is override set... */
@@ -390,7 +390,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public nint display;   /* Display the event was read from */
+        public XDisplay display;   /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         public bool from_configure;
@@ -405,7 +405,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public nint display;   /* Display the event was read from */
+        public XDisplay display;   /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
     }
@@ -416,7 +416,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         public int x, y;
@@ -428,7 +428,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;
         public int width, height;
     }
@@ -439,7 +439,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         public int place;
@@ -451,7 +451,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow parent;
         public XWindow window;
         public int place;
@@ -463,7 +463,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;
         public XAtom atom;
         public long time;
@@ -476,7 +476,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;
         public XAtom selection;
         public long time;
@@ -488,7 +488,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow owner;
         public XWindow requestor;
         public XAtom selection;
@@ -503,7 +503,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow requestor;
         public XAtom selection;
         public XAtom target;
@@ -517,7 +517,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;
         public XColormap colormap;      /* COLORMAP or None */
         public bool @new;
@@ -530,7 +530,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;
         public XAtom message_type;
         public int format;
@@ -543,7 +543,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;        /* true if this came from a SendEvent request */
-        public nint display;       /* Display the event was read from */
+        public XDisplay display;       /* Display the event was read from */
         public XWindow window;          /* unused */
         public XMappingType request;            /* one of MappingModifier, MappingKeyboard,
                                    MappingPointer */
@@ -557,7 +557,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public nint display;   /* Display the event was read from */
+        public XDisplay display;   /* Display the event was read from */
         public XWindow parent;
         public XWindow window;
         public int x;
@@ -576,7 +576,7 @@ namespace XLibSharp
         public int type;
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public nint display;   /* Display the event was read from */
+        public XDisplay display;   /* Display the event was read from */
         public XWindow parent;
         public XWindow window;
         public int x;
@@ -597,7 +597,7 @@ namespace XLibSharp
         public int type;               /* ReparentNotify */
         public ulong serial;   /* # of last request processed by server */
         public bool send_event;    /* true if this came from a SendEvent request */
-        public nint display;   /* Display the event was read from */
+        public XDisplay display;   /* Display the event was read from */
         public XWindow @event;
         public XWindow window;
         /// <summary>
@@ -619,7 +619,7 @@ namespace XLibSharp
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XNextEvent(nint display, nint event_return);
+        public static extern XStatus XNextEvent(XDisplay display, nint event_return);
 
         /// <summary>
         /// The XPeekEvent function returns the first event from the event queue, but it does not remove the event from
@@ -630,7 +630,7 @@ namespace XLibSharp
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XPeekEvent(nint display, nint event_return);
+        public static extern XStatus XPeekEvent(XDisplay display, nint event_return);
 
         /// <summary>
         /// The XWindowEvent function searches the event queue for an event that matches both the specified window and
@@ -644,7 +644,7 @@ namespace XLibSharp
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XWindowEvent(nint display, XWindow window, XEventMask mask, nint event_return);
+        public static extern XStatus XWindowEvent(XDisplay display, XWindow window, XEventMask mask, nint event_return);
 
         /// <summary>
         /// The XCheckWindowEvent function searches the event queue and then the events available on the server connection
@@ -659,7 +659,7 @@ namespace XLibSharp
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XCheckWindowEvent(nint display, XWindow window, XEventMask mask, nint event_return);
+        public static extern XStatus XCheckWindowEvent(XDisplay display, XWindow window, XEventMask mask, nint event_return);
 
         /// <summary>
         /// The XMaskEvent function searches the event queue for the events associated with the specified mask.  When it
@@ -672,7 +672,7 @@ namespace XLibSharp
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XMaskEvent(nint display, XEventMask mask, nint event_return);
+        public static extern XStatus XMaskEvent(XDisplay display, XEventMask mask, nint event_return);
 
         /// <summary>
         /// The XCheckMaskEvent function searches the event queue and then any events available on the server connection
@@ -686,7 +686,7 @@ namespace XLibSharp
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern bool XCheckMaskEvent(nint display, XEventMask mask, nint event_return);
+        public static extern bool XCheckMaskEvent(XDisplay display, XEventMask mask, nint event_return);
 
         /// <summary>
         /// The XCheckTypedEvent function searches the event queue and then any events available on the server connection
@@ -700,7 +700,7 @@ namespace XLibSharp
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern bool XCheckTypedEvent(nint display, XEvent type, nint event_return);
+        public static extern bool XCheckTypedEvent(XDisplay display, XEvent type, nint event_return);
 
         /// <summary>
         /// The XCheckTypedWindowEvent function searches the event queue and then any events available on the server con‐
@@ -715,7 +715,7 @@ namespace XLibSharp
         /// <param name="event_return">Pre-allocated buffer to hold the returned event</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern bool XCheckTypedWindowEvent(nint display, XWindow window, XEvent type, nint event_return);
+        public static extern bool XCheckTypedWindowEvent(XDisplay display, XWindow window, XEvent type, nint event_return);
 
         /// <summary>
         /// The XSync function flushes the output buffer and then waits until all requests have been received and pro‐
@@ -730,7 +730,7 @@ namespace XLibSharp
         /// <param name="discard">Discard queued events</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSync(nint display, bool discard);
+        public static extern XStatus XSync(XDisplay display, bool discard);
 
         /// <summary>
         /// The XFlush function flushes the output buffer.  Most client applications need not use this function because
@@ -740,7 +740,7 @@ namespace XLibSharp
         /// <param name="display">Connected display </param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XFlush(nint display);
+        public static extern XStatus XFlush(XDisplay display);
 
         /// <summary>
         /// If mode is QueuedAlready, XEventsQueued returns the number of events already in the event queue (and never
@@ -759,7 +759,7 @@ namespace XLibSharp
         /// <param name="mode">Mode of operation</param>
         /// <returns>Number of queued events</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XEventsQueued(nint display, XQueueMode mode);
+        public static extern int XEventsQueued(XDisplay display, XQueueMode mode);
 
         /// <summary>
         /// The XPending function returns the number of events that have been received from the X server but have not been
@@ -769,18 +769,18 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Number of events pending removal from the queue</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XPending(nint display);
+        public static extern int XPending(XDisplay display);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSendEvent(nint display, XWindow window, bool propagate, long event_mask, nint event_send);
+        public static extern XStatus XSendEvent(XDisplay display, XWindow window, bool propagate, long event_mask, nint event_send);
 
         [DllImport("libX11.so.6")]
-        public static extern XAtom XInternAtom(nint display, string name, bool only_if_exists);
+        public static extern XAtom XInternAtom(XDisplay display, string name, bool only_if_exists);
 
         [DllImport("libX11.so.6")]
-        public static extern String XGetAtomName(nint display, XAtom atom);
+        public static extern String XGetAtomName(XDisplay display, XAtom atom);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSetWMProtocols(nint display, XWindow window, ref XAtom protocols, int count);
+        public static extern XStatus XSetWMProtocols(XDisplay display, XWindow window, ref XAtom protocols, int count);
     }
 }

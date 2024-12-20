@@ -6,7 +6,7 @@ namespace XLibSharp
     public struct XErrorEvent
     {
         public int type;
-        public nint display;
+        public XDisplay display;
         public XID resourceid;
         public ulong serial;
         public byte error_code;
@@ -15,10 +15,10 @@ namespace XLibSharp
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate int XErrorHandlerDelegate(nint display, ref XErrorEvent ev);
+    public delegate int XErrorHandlerDelegate(XDisplay display, ref XErrorEvent ev);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate int XIOErrorHandlerDelegate(nint display);
+    public delegate int XIOErrorHandlerDelegate(XDisplay display);
 
     public partial class XLib
     {
@@ -50,7 +50,7 @@ namespace XLibSharp
         /// <param name="length">Length of the descrition buffer</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGetErrorText(nint display, int code, nint description, int length);
+        public static extern XStatus XGetErrorText(XDisplay display, int code, nint description, int length);
 
         /// <summary>
         /// The XGetErrorDatabaseText function returns a null-terminated message (or the default message) from the error
@@ -70,7 +70,7 @@ namespace XLibSharp
         /// <param name="length">Length of the buffer</param>
         /// <returns>Zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XGetErrorDatabaseText(nint display, string name, string message, string default_string,
+        public static extern XStatus XGetErrorDatabaseText(XDisplay display, string name, string message, string default_string,
             nint buffer_return, int length);
     }
 }

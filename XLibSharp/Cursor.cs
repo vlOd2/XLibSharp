@@ -22,7 +22,7 @@ namespace XLibSharp
         /// <param name="cursor">Cursor to use</param>
         /// <returns>zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XDefineCursor(nint display, XWindow window, XCursor cursor);
+        public static extern XStatus XDefineCursor(XDisplay display, XWindow window, XCursor cursor);
 
         /// <summary>
         /// The XUndefineCursor function undoes the effect of a previous XDefineCursor for this window.  When the pointer
@@ -32,7 +32,7 @@ namespace XLibSharp
         /// <param name="window">Target window</param>
         /// <returns>zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XUndefineCursor(nint display, XWindow window);
+        public static extern XStatus XUndefineCursor(XDisplay display, XWindow window);
 
         /// <summary>
         /// X provides a set of standard cursor shapes in a special font named cursor. Applications are encouraged to use
@@ -45,7 +45,7 @@ namespace XLibSharp
         /// <param name="shape">Cursor shape to use</param>
         /// <returns>Prepared cursor</returns>
         [DllImport("libX11.so.6")]
-        public static extern XCursor XCreateFontCursor(nint display, XFontCursor shape);
+        public static extern XCursor XCreateFontCursor(XDisplay display, XFontCursor shape);
 
         /// <summary>
         /// The XCreatePixmapCursor function creates a cursor and returns the cursor ID associated with it.  The fore‐
@@ -72,7 +72,7 @@ namespace XLibSharp
         /// <param name="y">hotspot y co-ordinate relative to the source's origin</param>
         /// <returns>Prepared cursor</returns>
         [DllImport("libX11.so.6")]
-        public static extern XCursor XCreatePixmapCursor(nint display, XPixmap source, XPixmap mask,
+        public static extern XCursor XCreatePixmapCursor(XDisplay display, XPixmap source, XPixmap mask,
             ref XColor foreground_color, ref XColor background_color, uint x, uint y);
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace XLibSharp
         /// <param name="background_color"></param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XCursor XCreateGlyphCursor(nint display, XFont source_font, XFont mask_font, uint source_char,
+        public static extern XCursor XCreateGlyphCursor(XDisplay display, XFont source_font, XFont mask_font, uint source_char,
               uint mask_char, ref XColor foreground_color, ref XColor background_color);
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace XLibSharp
         /// <param name="background_color">New background colour</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XRecolorCursor(nint display, XCursor cursor,
+        public static extern XStatus XRecolorCursor(XDisplay display, XCursor cursor,
             ref XColor foreground_color, ref XColor background_color);
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace XLibSharp
         /// <param name="cursor">Formatted cursor</param>
         /// <returns>zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XFreeCursor(nint display, XCursor cursor);
+        public static extern XStatus XFreeCursor(XDisplay display, XCursor cursor);
 
         /// <summary>
         /// Some displays allow larger cursors than other displays.  The XQueryBestCursor function provides a way to find
@@ -138,7 +138,7 @@ namespace XLibSharp
         /// <param name="height_return">Returned height closest to specified height</param>
         /// <returns>zero on error</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XQueryBestCursor(nint display, XWindow drawable, uint width, uint height,
+        public static extern XStatus XQueryBestCursor(XDisplay display, XWindow drawable, uint width, uint height,
             ref uint width_return, ref uint height_return);
     }
 }

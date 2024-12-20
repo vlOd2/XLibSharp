@@ -14,27 +14,27 @@ namespace XLibSharp
     public partial class XLib
     {
         [DllImport("libX11.so.6")]
-        public static extern XStatus XAddHost(nint display, ref XHostAddress host);
+        public static extern XStatus XAddHost(XDisplay display, ref XHostAddress host);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XAddHosts(nint display, ref XHostAddress hosts, int num_hosts);
+        public static extern XStatus XAddHosts(XDisplay display, ref XHostAddress hosts, int num_hosts);
 
         [DllImport("libX11.so.6")]
-        public static extern ref XHostAddress XListHosts(nint display, ref int nhosts_return, ref bool state_return);
+        public static extern ref XHostAddress XListHosts(XDisplay display, ref int nhosts_return, ref bool state_return);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XRemoveHost(nint display, ref XHostAddress host);
+        public static extern XStatus XRemoveHost(XDisplay display, ref XHostAddress host);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XRemoveHosts(nint display, ref XHostAddress hosts, int num_hosts);
+        public static extern XStatus XRemoveHosts(XDisplay display, ref XHostAddress hosts, int num_hosts);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSetAccessControl(nint display, int mode);
+        public static extern XStatus XSetAccessControl(XDisplay display, int mode);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XEnableAccessControl(nint display);
+        public static extern XStatus XEnableAccessControl(XDisplay display);
 
         [DllImport("libX11.so.6")]
-        public static extern XStatus XDisableAccessControl(nint display);
+        public static extern XStatus XDisableAccessControl(XDisplay display);
     }
 }

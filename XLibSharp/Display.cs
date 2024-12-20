@@ -19,7 +19,7 @@ namespace XLibSharp
     public struct Screen
     {
         nint ext_data;     /* hook for extension to hang data */
-        nint display;/* back pointer to display structure */
+        XDisplay display;/* back pointer to display structure */
         XWindow root;            /* Root window id. */
         int width, height;      /* width and height of screen */
         int mwidth, mheight;    /* width and height of  in millimeters */
@@ -54,7 +54,7 @@ namespace XLibSharp
         /// <param name="display">Display pointer to free</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XCloseDisplay(nint display);
+        public static extern XStatus XCloseDisplay(XDisplay display);
 
         /// <summary>
         /// The XSetCloseDownMode() defines what will happen to the client's resources at connection close. 
@@ -65,7 +65,7 @@ namespace XLibSharp
         /// <param name="close_mode">New close down mode setting</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XSetCloseDownMode(nint display, XCloseDownMode close_mode);
+        public static extern XStatus XSetCloseDownMode(XDisplay display, XCloseDownMode close_mode);
 
         /// <summary>
         /// The XKillClient function forces a close down of the client that created the resource if a valid resource is
@@ -80,7 +80,7 @@ namespace XLibSharp
         /// <param name="resource">Resource specifying client to kill</param>
         /// <returns>Zero on failure</returns>
         [DllImport("libX11.so.6")]
-        public static extern XStatus XKillClient(nint display, XWindow resource);
+        public static extern XStatus XKillClient(XDisplay display, XWindow resource);
 
         /// <summary>
         /// Return the black pixel value for the specified screen
@@ -89,7 +89,7 @@ namespace XLibSharp
         /// <param name="screen_number">target screen</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern ulong XBlackPixel(nint display, int screen_number);
+        public static extern ulong XBlackPixel(XDisplay display, int screen_number);
 
         /// <summary>
         /// Return the white pixel value for the specified screen
@@ -98,7 +98,7 @@ namespace XLibSharp
         /// <param name="screen_number">target screen</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern ulong XWhitePixel(nint display, int screen_number);
+        public static extern ulong XWhitePixel(XDisplay display, int screen_number);
 
         /// <summary>
         /// Returns the connection number (i.e. file descriptor) corresponding to the named display
@@ -106,7 +106,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>File descriptor or equivalent</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XConnectionNumber(nint display);
+        public static extern int XConnectionNumber(XDisplay display);
 
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace XLibSharp
         /// <param name="screen_number">Target screen</param>
         /// <returns>Depth in planes</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XDefaultDepth(nint display, int screen_number);
+        public static extern int XDefaultDepth(XDisplay display, int screen_number);
 
         /// <summary>
         /// The XListDepths() function returns the array of depths that are available on the specified screen.
@@ -129,7 +129,7 @@ namespace XLibSharp
         /// <param name="count_return">Returned array of depths</param>
         /// <returns>null on error otherwise array of depths</returns>
         [DllImport("libX11.so.6")]
-        public static extern ref int XListDepths(nint display, int screen_number, ref int count_return);
+        public static extern ref int XListDepths(XDisplay display, int screen_number, ref int count_return);
 
         /// <summary>
         /// Both return the default graphics context for the root window of the specified screen. This GC is created for
@@ -141,7 +141,7 @@ namespace XLibSharp
         /// <param name="screen_number">Target screen number</param>
         /// <returns>Reference to the default graphics context</returns>
         [DllImport("libX11.so.6")]
-        public static extern nint XDefaultGC(nint display, int screen_number);
+        public static extern nint XDefaultGC(XDisplay display, int screen_number);
 
 
 
@@ -151,7 +151,7 @@ namespace XLibSharp
         /// <param name="display">Pointer to an open X display</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XWindow XDefaultRootWindow(nint display);
+        public static extern XWindow XDefaultRootWindow(XDisplay display);
 
         /// <summary>
         /// Returns the root window for the specified display
@@ -160,7 +160,7 @@ namespace XLibSharp
         /// <param name="screen_number">Target screen number</param>
         /// <returns></returns>
         [DllImport("libX11.so.6")]
-        public static extern XWindow XRootWindow(nint display, int screen_number);
+        public static extern XWindow XRootWindow(XDisplay display, int screen_number);
 
         /// <summary>
         /// Returns a pointer to the default screen
@@ -168,7 +168,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Pointer to the default screen</returns>
         [DllImport("libX11.so.6")]
-        public static extern ref Screen XDefaultScreenOfDisplay(nint display);
+        public static extern ref Screen XDefaultScreenOfDisplay(XDisplay display);
 
         /// <summary>
         /// Returns a pointer to the indicated screen
@@ -177,7 +177,7 @@ namespace XLibSharp
         /// <param name="screen_number">Target screen number</param>
         /// <returns>Pointer to the specified screen</returns>
         [DllImport("libX11.so.6")]
-        public static extern ref Screen XScreenOfDisplay(nint display, int screen_number);
+        public static extern ref Screen XScreenOfDisplay(XDisplay display, int screen_number);
 
         /// <summary>
         /// Returns the default screen number for the specified display
@@ -185,7 +185,7 @@ namespace XLibSharp
         /// <param name="display"></param>
         /// <returns>Default screen number</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XDefaultScreen(nint display);
+        public static extern int XDefaultScreen(XDisplay display);
 
         /// <summary>
         /// Return the number of available screens on the connected display
@@ -193,7 +193,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Number of available screens</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XScreenCount(nint display);
+        public static extern int XScreenCount(XDisplay display);
 
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace XLibSharp
         /// <param name="screen_number">Target screen number</param>
         /// <returns>Pointer to the default visual</returns>
         [DllImport("libX11.so.6")]
-        public static extern nint XDefaultVisual(nint display, int screen_number);
+        public static extern nint XDefaultVisual(XDisplay display, int screen_number);
 
         /// <summary>
         /// Returns the number of entries in the default colour map
@@ -212,7 +212,7 @@ namespace XLibSharp
         /// <param name="screen_number">Target screen number</param>
         /// <returns>Number of entries in the colour map</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XDisplayCells(nint display, int screen_number);
+        public static extern int XDisplayCells(XDisplay display, int screen_number);
 
         /// <summary>
         /// Returns the depth of the root window of the specified screen.
@@ -221,7 +221,7 @@ namespace XLibSharp
         /// <param name="screen_number">Target screen number</param>
         /// <returns>Depth of the root window</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XDisplayPlanes(nint display, int screen_number);
+        public static extern int XDisplayPlanes(XDisplay display, int screen_number);
 
         /// <summary>
         /// Both return a pointer to the string that was passed to XOpenDisplay() when the current display was opened.
@@ -231,7 +231,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Pointer to the character buffer containing the display string</returns>
         [DllImport("libX11.so.6")]
-        public static extern nint XDisplayString(nint display);
+        public static extern nint XDisplayString(XDisplay display);
 
         /// <summary>
         /// The XExtendedMaxRequestSize() function returns zero if the specified display does not support an 
@@ -241,7 +241,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Zero or else maximum extended request size</returns>
         [DllImport("libX11.so.6")]
-        public static extern long XExtendedMaxRequestSize(nint display);
+        public static extern long XExtendedMaxRequestSize(XDisplay display);
 
         /// <summary>
         /// The XMaxRequestSize() function returns the maximum request size (in 4-byte units) supported by the server 
@@ -250,7 +250,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Maximum request length in 4-byte units</returns>
         [DllImport("libX11.so.6")]
-        public static extern long XMaxRequestSize(nint display);
+        public static extern long XMaxRequestSize(XDisplay display);
 
         /// <summary>
         ///  Retrieves the full serial number of the last request known by Xlib to have been processed by the X server.
@@ -258,7 +258,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Serial number of the last processed request</returns>
         [DllImport("libX11.so.6")]
-        public static extern ulong XLastKnownRequestProcessed(nint display);
+        public static extern ulong XLastKnownRequestProcessed(XDisplay display);
 
         /// <summary>
         /// Retrieve the full serial number that is to be used for the next request
@@ -266,7 +266,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Serial number of the next request to process</returns>
         [DllImport("libX11.so.6")]
-        public static extern ulong XNextRequest(nint display);
+        public static extern ulong XNextRequest(XDisplay display);
 
         /// <summary>
         /// Returns a pointer to a character buffer holding the vendor identification string for the connected server.
@@ -274,7 +274,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Pointer to a C string containing the vendor ID.</returns>
         [DllImport("libX11.so.6")]
-        public static extern nint XServerVendor(nint display);
+        public static extern nint XServerVendor(XDisplay display);
 
         /// <summary>
         /// Returns the vendor defined version number for this X server.
@@ -282,7 +282,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>version number</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XVendorRelease(nint display);
+        public static extern int XVendorRelease(XDisplay display);
 
         /// <summary>
         /// Returns the major version number (11) of the X protocol associated with the connected display
@@ -290,7 +290,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>X protocol major version number</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XProtocolVersion(nint display);
+        public static extern int XProtocolVersion(XDisplay display);
 
         /// <summary>
         /// Returns the minor revision number (e.g. 6) of the X protocol associated with the connected display
@@ -298,7 +298,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>X protocol minor revision number</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XProtocolRevision(nint display);
+        public static extern int XProtocolRevision(XDisplay display);
 
         /// <summary>
         /// Returns the length of the event queue for the connected display
@@ -306,7 +306,7 @@ namespace XLibSharp
         /// <param name="display">Connected display</param>
         /// <returns>Current queue length</returns>
         [DllImport("libX11.so.6")]
-        public static extern int XQLength(nint display);
+        public static extern int XQLength(XDisplay display);
 
         /// <summary>
         /// The XSynchronize function returns the previous after function.  If onoff is True, XSynchronize turns on
@@ -316,7 +316,7 @@ namespace XLibSharp
         /// <param name="onoff">Enable or disable synchronous behaviour</param>
         /// <returns>The 'after' function</returns>
         [DllImport("libX11.so.6")]
-        public static extern nint XSynchronize(nint display, bool onoff);
+        public static extern nint XSynchronize(XDisplay display, bool onoff);
 
         /// <summary>
         /// After function signature
@@ -332,13 +332,13 @@ namespace XLibSharp
         /// <param name="after_function">New after function delegate</param>
         /// <returns>The previous after function</returns>
         [DllImport("libX11.so.6")]
-        public static extern nint XSetAfterFunction(nint display, XAfterFunctionDelegate after_function);
+        public static extern nint XSetAfterFunction(XDisplay display, XAfterFunctionDelegate after_function);
 
         [DllImport("libX11.so.6")]
-        public static extern int XGrabServer(nint display);
+        public static extern int XGrabServer(XDisplay display);
 
         [DllImport("libX11.so.6")]
-        public static extern int XUngrabServer(nint display);
+        public static extern int XUngrabServer(XDisplay display);
 
         /// <summary>
         ///  The XDisplayName function returns the name of the display that XOpenDisplay would attempt to use.  If a NULL
@@ -352,6 +352,6 @@ namespace XLibSharp
         public static extern nint XDisplayName(string display);
 
         [DllImport("libX11.so.6")]
-        public static extern int XChangeProperty(nint display, XWindow window, XAtom property, XAtom type, int format, int mode, nint data, int nelements);
+        public static extern int XChangeProperty(XDisplay display, XWindow window, XAtom property, XAtom type, int format, int mode, nint data, int nelements);
     }
 }
