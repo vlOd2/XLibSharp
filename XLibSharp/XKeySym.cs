@@ -1,6 +1,6 @@
 namespace XLibSharp
 {
-    public enum XKeySym : long
+    public enum XKeySym : ulong
     {
         NoSymbol = 0,
         XK_VoidSymbol = 0xffffff,
